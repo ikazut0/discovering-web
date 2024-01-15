@@ -1,7 +1,7 @@
 <?php require 'admin/include/db_config.php'; require 'admin/include/essentials.php'; session_start(); ?>
 
 <!DOCTYPE HTML>
-<html lang="UA">
+<HTML lang="UA">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">

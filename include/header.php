@@ -84,7 +84,7 @@ $title_r = mysqli_fetch_assoc(selectData($title_q, $values, 'i'));
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link" href="ukraine-war.php">#WARINUA2022 <img class="me-2" width="18" height="24" src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/df/Nuvola_Ukrainian_flag_alternate.svg/1024px-Nuvola_Ukrainian_flag_alternate.svg.png"></a>
+                    <a class="nav-link" href="ukraine-war.php">#WARINUA2022</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link me-1" href="tour-list.php">КАТАЛОГ ТУРІВ</a>
@@ -113,7 +113,7 @@ $title_r = mysqli_fetch_assoc(selectData($title_q, $values, 'i'));
             <div class="d-flex">
     <?php if ($userLoggedIn) { ?>
         <a href="user_details.php" class="text-decoration-none">
-            <span class="me-lg-3 me-2" style="white-space: nowrap;">Привіт, <?php echo $userName; ?>!</span>
+            <span class="me-lg-3 me-2" style="white-space: nowrap;">👋 Привіт, <?php echo $userName; ?></span>
         </a>
     <?php } else { ?>
         <button type="button" class="btn btn-outline-dark shadow-none me-2" data-bs-toggle="modal" data-bs-target="#loginModal"> АВТОРИЗАЦІЯ </button>

@@ -1,16 +1,13 @@
-<?php
-require('admin/include/db_config.php');
-require('admin/include/essentials.php');
-?>
+<?php require('admin/include/db_config.php'); require('admin/include/essentials.php'); session_start(); ?>
 
 <!DOCTYPE HTML>
-<html lang="UA">
-
+<HTML lang="UA">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <?php require('include/links.php'); ?>
-    <title>DISCOVERING.UA - МАНДРУЙ УКРАЇНОЮ</title>
+    <link rel="shortcut icon" href="https://cdn.icon-icons.com/icons2/1928/PNG/512/iconfinder-compass-direction-maps-holiday-vacation-icon-4602027_122100.png" type="image/x-icon">
+    <title>DISCOVERING.UA</title>
 </head>
 
 <body class="bg-light">
@@ -112,7 +109,7 @@ require('admin/include/essentials.php');
                         $buttonHTML = '';
 
                         if ($userLoggedIn) {
-                            $buttonHTML = '<a href="#" class="btn w-100 text-white custom-bg shadow-none mb-1">ОФОРМИТИ 🛍️</a>';
+                            $buttonHTML = '<a href="book-tour.php?tour_id=' . $tour_data['tour_id'] . '" class="btn btn-sm w-100 text-white custom-bg shadow-none mb-2">ПРИДБАТИ ТУР 🛍️</a>';
                         }
 
                         echo $buttonHTML;
@@ -163,6 +160,7 @@ require('admin/include/essentials.php');
                 </footer>
             </div>
 
-            <?php require('include/scripts-library.php'); ?>
+            <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
 </body> </html>
