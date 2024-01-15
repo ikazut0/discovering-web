@@ -1,0 +1,85 @@
+* {
+    font-family: 'Poppins', sans-serif;
+}
+
+.h-font {
+    font-family: 'Merienda', cursive;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type="number"] {
+    -moz-appearance: textfield;
+}
+
+.col-lg-12.bg-white.shadow.p-4.rounded {
+    margin-top: 25px;
+}
+
+.custom-bg {
+    background-color: #2ec1ac;
+}
+
+.custom-bg:hover {
+    background-color: #279e8c;
+}
+
+@media screen and (max-width: 575px) {
+    .availability-form-phone-optimization {
+        margin-top: 25px;
+        padding: 0 35px;
+    }
+}
+
+.support-ukraine {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgb(0, 0, 0);
+    display: flex;
+    justify-content: center;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    z-index: 10000;
+    text-decoration: none;
+    font-family: arial;
+}
+
+.support-ukraine:hover,
+.support-ukraine:active {
+    background: rgb(80, 80, 80);
+}
+
+.support-ukraine__flag {
+    height: 25px;
+    margin-right: 10px;
+}
+
+.support-ukraine__flag__blue {
+    width: 40px;
+    height: 12.5px;
+    background: #005BBB;
+}
+
+.support-ukraine__flag__yellow {
+    width: 40px;
+    height: 12.5px;
+    background: #FFD500;
+}
+
+.support-ukraine__label {
+    color: white;
+    font-size: 12px;
+    line-height: 25px;
+}
+
+.custom-alert {
+    position: fixed;
+    top: 10px;
+    right: 25px;
+}
