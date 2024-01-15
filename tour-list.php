@@ -108,7 +108,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
                     </button>
                     <div class="collapse navbar-collapse flex-column align-items-stretch mt-2" id="filterDropdown">
                         <div class="border bg-light p-3 rounded mb-3">
-                            <h5 class="mb-3" style="font-size: 18px;">ПОШУК ТУРІВ ПО НАЗВІ :</h5>
+                            <h5 class="mb-3" style="font-size: 18px;">ПОШУК ТУРІВ ПО НАЗВІ : </h5>
                             <form method="get" action="">
                                 <label for="searchTour">Введіть назву туру:</label>
                                 <input type="text" id="searchTour" name="searchTour" class="form-control shadow-none mb-3">
