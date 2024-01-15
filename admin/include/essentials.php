@@ -1,9 +1,9 @@
 <?php
 
-defined('SITE_URL') || define('SITE_URL', 'http://127.0.0.1/graduate-project/');
+defined('SITE_URL') || define('SITE_URL', 'http://127.0.0.1/discovering-web/');
 defined('CAROUSEL_IMG_PATH') || define('CAROUSEL_IMG_PATH', SITE_URL.'images/carousel-pictures/');
 defined('TOURS_IMG_PATH') || define('TOURS_IMG_PATH', SITE_URL.'images/tour-pictures/');
-defined('UPLOAD_IMAGE_PATH') || define('UPLOAD_IMAGE_PATH', $_SERVER['DOCUMENT_ROOT'].'/graduate-project/images/');
+defined('UPLOAD_IMAGE_PATH') || define('UPLOAD_IMAGE_PATH', $_SERVER['DOCUMENT_ROOT'].'/discovering-web/images/');
 defined('CAROUSEL_FOLDER') || define('CAROUSEL_FOLDER', 'carousel-pictures/');
 defined('TOUR_FOLDER') || define('TOUR_FOLDER', 'tour-pictures/');
 defined('USERS_FOLDER') || define('USERS_FOLDER', 'users-pictures/');

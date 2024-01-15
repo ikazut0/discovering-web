@@ -102,7 +102,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
         <div class="col-lg-3 col-md-12 mb-lg-0 mb-4 ps-4">
             <nav class="navbar navbar-expand-lg navbar-light bg-white rounded shadow">
                 <div class="container-fluid flex-lg-column align-items-stretch">
-                    <h4 class="mt-2">ФІЛЬТР ТУРІВ :</h4>
+                    <h4 class="mt-2">ФІЛЬТР ДЛЯ КАТАЛОГА : </h4>
                     <button class="navbar-toggler shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#filterDropdown" aria-controls="navbarNav" aria-expanded="false">
                         <span class="navbar-toggler-icon"></span>
                     </button>
@@ -110,36 +110,36 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
                         <div class="border bg-light p-3 rounded mb-3">
                             <h5 class="mb-3" style="font-size: 18px;">ПОШУК ТУРІВ ПО НАЗВІ : </h5>
                             <form method="get" action="">
-                                <label for="searchTour">Введіть назву туру:</label>
+                                <label for="searchTour">ВВЕДІТЬ НАЗВУ ТУРУ : </label>
                                 <input type="text" id="searchTour" name="searchTour" class="form-control shadow-none mb-3">
-                                <button type="submit" class="btn btn-sm btn-outline-dark">Пошук</button>
-                                <a href="tour-list.php" class="btn btn-sm btn-outline-secondary">Скинути</a>
+                                <button type="submit" class="btn btn-sm btn-outline-dark">ПОШУК</button>
+                                <a href="tour-list.php" class="btn btn-sm btn-outline-secondary">СКИНУТИ КАТАЛОГ</a>
                             </form>
                         </div>
                         
                         <div class="border bg-light p-3 rounded mb-3">
-                            <h5 class="mb-3" style="font-size: 18px;">СОРТУВАННЯ ТУРІВ:</h5>
+                            <h5 class="mb-3" style="font-size: 18px;">СОРТУВАННЯ ЗА НАЗВОЮ : </h5>
                             <form method="get" action="">
-                                <label for="sortTour">Оберіть спосіб сортування:</label>
+                                <label for="sortTour">ОБЕРІТЬ СПОСІБ СОРТУВАННЯ : </label>
                                 <select id="sortTour" name="sortTour" class="form-select shadow-none mb-3 small-text">
-                                    <option value="name_asc">За назвою (за зростанням)</option>
-                                    <option value="name_desc">За назвою (за спаданням)</option>
+                                    <option value="name_asc">ЗА НАЗВОЮ [ЗА ЗРОСТАННЯМ]</option>
+                                    <option value="name_desc">ЗА НАЗВОЮ [ЗА СПАДАННЯМ]</option>
                                 </select>
-                                <button type="submit" class="btn btn-sm btn-outline-dark">Сортувати</button>
+                                <button type="submit" class="btn btn-sm btn-outline-dark">СОРТУВАТИ КАТАЛОГ</button>
                             </form>
                         </div>
                         
                         <div class="border bg-light p-3 rounded mb-3">
-                            <h5 class="mb-3" style="font-size: 18px;">СОРТУВАННЯ ПО КІЛЬКОСТІ ЛЮДЕЙ:</h5>
+                            <h5 class="mb-3" style="font-size: 18px;">СОРТУВАННЯ ПО ЛЮДЯХ : </h5>
                             <form method="get" action="">
-                                <label for="sortPeople">Оберіть спосіб сортування:</label>
+                                <label for="sortPeople">ОБЕРІТЬ СПОСІБ СОРТУВАННЯ : </label>
                                 <select id="sortPeople" name="sortPeople" class="form-select shadow-none mb-3 small-text">
-                                    <option value="adult_asc">За кількістю дорослих (за зростанням)</option>
-                                    <option value="adult_desc">За кількістю дорослих (за спаданням)</option>
-                                    <option value="children_asc">За кількістю дітей (за зростанням)</option>
-                                    <option value="children_desc">За кількістю дітей (за спаданням)</option>
+                                    <option value="adult_asc">К-СТЬ ДОРОСЛИХ [ЗА ЗРОСТАННЯМ]</option>
+                                    <option value="adult_desc">К-СТЬ ДОРОСЛИХ [ЗА СПАДАННЯМ]</option>
+                                    <option value="children_asc">К-СТЬ ДІТЕЙ [ЗА ЗРОСТАННЯМ]</option>
+                                    <option value="children_desc">К-СТЬ ДІТЕЙ [ЗА СПАДАННЯМ]</option>
                                 </select>
-                                <button type="submit" class="btn btn-sm btn-outline-dark">Сортувати</button>
+                                <button type="submit" class="btn btn-sm btn-outline-dark">СОРТУВАТИ КАТАЛОГ</button>
                             </form>
                         </div>
                     </div>
@@ -153,6 +153,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
             $sortOption = isset($_GET['sortTour']) ? $_GET['sortTour'] : '';
             $sortPeopleOption = isset($_GET['sortPeople']) ? $_GET['sortPeople'] : '';
             $searchTour = isset($_GET['searchTour']) ? $_GET['searchTour'] : '';
+            $escapedSearchTour = htmlspecialchars($searchTour, ENT_QUOTES, 'UTF-8');
+            
+            function highlightSearchTerm($text, $searchTerm) {
+                return preg_replace("/\b($searchTerm)\b/i", '<mark>$1</mark>', $text);
+            }
             
             $orderBy = '';
             $orderByPeople = '';
@@ -167,10 +172,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
                     break;
                 }
                 
-                switch ($sortPeopleOption) {
-                    case 'adult_asc':
-                        $orderByPeople = 'ORDER BY `tour_adult` ASC';
-                        break;
+            switch ($sortPeopleOption) {
+                case 'adult_asc':
+                    $orderByPeople = 'ORDER BY `tour_adult` ASC';
+                    break;
                         
                 case 'adult_desc':
                     $orderByPeople = 'ORDER BY `tour_adult` DESC';
@@ -208,18 +213,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
                     $buttonHTML = '';
                     
                     if ($isTourBooked) {
-                        $buttonHTML = '<p class="mb-2 text-success">Оформлено</p>';
+                        $buttonHTML = '<p class="mb-2 text-success">ПРИДБАНО ВАМИ 😎</p>';
                     } elseif ($userLoggedIn && $tour_thumb !== TOURS_IMG_PATH . "empty-image-alert.gif") {
-                        $buttonHTML = '<a href="book-tour.php?tour_id=' . $tour_data['tour_id'] . '" class="btn btn-sm w-100 text-white custom-bg shadow-none mb-2">ОФОРМИТИ 🛍️</a>';
+                        $buttonHTML = '<a href="book-tour.php?tour_id=' . $tour_data['tour_id'] . '" class="btn btn-sm w-100 text-white custom-bg shadow-none mb-2">ПРИДБАТИ ТУР 🛍️</a>';
                     }                    
                     
                     if ($userLoggedIn) {
-                        $buttonHTML .= '<a href="javascript:void(0)" class="btn btn-sm w-100 text-white custom-bg shadow-none mb-2 like-button" data-tour-id="' . $tour_data['tour_id'] . '">ЗАКЛАДКИ ❤️</a>';
+                        $buttonHTML .= '<a href="javascript:void(0)" class="btn btn-sm w-100 text-white custom-bg shadow-none mb-2 like-button" data-tour-id="' . $tour_data['tour_id'] . '">ДОДАТИ В ОБРАНІ</a>';
                     }
                     
-                    $buttonHTML .= '<a href="tour-details.php?tour_id=' . $tour_data['tour_id'] . '" class="btn btn-sm w-100 btn-outline-dark shadow-none mt-2 ml-2">ДЕТАЛЬНІШЕ...</a>';
+                    $buttonHTML .= '<a href="tour-details.php?tour_id=' . $tour_data['tour_id'] . '" class="btn btn-sm w-100 btn-outline-dark shadow-none mt-2 ml-2"> ДЕТАЛЬНІШЕ >>> </a>';
                     
-                    $highlightedName = str_ireplace($searchTour, '<mark>' . $searchTour . '</mark>', $tour_data['tour_name']);
+                    $highlightedName = highlightSearchTerm($tour_data['tour_name'], $escapedSearchTour);
                     
                     echo <<< data
                     <div class="card mb-4 border-0 shadow">
@@ -227,29 +232,30 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
                     <div class="col-md-5 mb-lg-0 mb-md-0 mb-3">
                     <img src="$tour_thumb" class="img-fluid rounded">
                     </div>
+
                     <div class="col-md-5 px-lg-3 px-md-3 px-0">
-                    <h5 class="mb-3">НАЗВА ТУРУ : $highlightedName</h5>
+                    <h5 class="mb-3">НАЗВА : $highlightedName</h5>
                     <div class="features mb-3">
-                    <h6 class="mb-1">КЛЮЧОВІ ОЗНАКИ ТУРА :</h6>
+                    <h6 class="mb-1">КЛЮЧОВІ ОСОБЛИВОСТІ ДАНОГО ТУРА : </h6>
                     $features_data
                     </div>
+
                     <div class="peoples mb-3">
-                    <h6 class="mb-1">ОРІЄНТОВАНО НА :</h6>
+                    <h6 class="mb-1">ДАНИЙ ТУР ОРІЄНТОВАНИЙ НА : </h6>
                     <span class="badge bg-light text-dark text-wrap">$tour_data[tour_adult] ДОРОСЛИХ</span>
                     <span class="badge bg-light text-dark text-wrap">$tour_data[tour_children] ДИТИНИ</span>
                     </div>
+
                     <div class="managers mb-3">
                     <h6 class="mb-1">КІЛЬКІСТЬ ЕКСКУРСОВОДІВ : </h6>
-                    <span class="badge bg-light text-dark text-wrap">$tour_data[tour_area] ЕКСКУРСОВОД [ІВ]</span>
-                    </div>
-                    </div>
+                    <span class="badge bg-light text-dark text-wrap">$tour_data[tour_area] ЕКСКУРСОВОД / ГІД [ІВ]</span>
+                    </div> </div>
+                    
                     <div class="col-md-2 text-center">
-                    <h6 class="mb-2">ЦІНА ЗА ТУР : $tour_data[tour_price]₴</h6>
-                    <p class="mb-2" style="font-size: 10px;"><i class="bi bi-exclamation-octagon"></i> ЦІНА ТІЛЬКИ ЗА ТУР </p>
+                    <h6 class="mb-2">ЦІНА ТУРУ : $tour_data[tour_price] ₴</h6>
+                    <p class="mb-2" style="font-size: 10px;"><i class="bi bi-exclamation-octagon"></i> ВКАЗАНА ЦІНА ТІЛЬКИ ЗА ТУР </p>
                     $buttonHTML
-                    </div>
-                    </div>
-                    </div>
+                    </div> </div> </div>
                     data;
                 }
                 ?>

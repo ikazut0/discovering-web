@@ -87,14 +87,14 @@ $title_r = mysqli_fetch_assoc(selectData($title_q, $values, 'i'));
                     <a class="nav-link" href="ukraine-war.php">#WARINUA2022 <img class="me-2" width="18" height="24" src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/df/Nuvola_Ukrainian_flag_alternate.svg/1024px-Nuvola_Ukrainian_flag_alternate.svg.png"></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link me-1" href="tour-list.php">СПИСОК ТУРІВ</a>
+                    <a class="nav-link me-1" href="tour-list.php">КАТАЛОГ ТУРІВ</a>
                 </li>
                 <?php if ($userLoggedIn): ?>
                     <li class="nav-item">
-                        <a class="nav-link me-1" href="tour-favorite.php">ВИБРАНЕ</a>
+                        <a class="nav-link me-1" href="tour-favorite.php">ОБРАНІ ТУРИ</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link me-1" href="user-book-tour-info.php">ПОКУПКИ</a>
+                        <a class="nav-link me-1" href="user-book-tour-info.php">ПРИДБАНІ ТУРИ</a>
                     </li>
                 <?php endif; ?>
                 <li class="nav-item">
