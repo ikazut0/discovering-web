@@ -26,18 +26,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $updatePasswordValues = [$hashedPassword, $email];
 
             if (updateData($updatePasswordQuery, $updatePasswordValues, 'ss')) {
-                echo json_encode(['success' => true, 'message' => 'Password change successful!']);
+                echo json_encode(['success' => true, 'message' => 'ПАРОЛЬ ЗМІНЕНО УСПІШНО!']);
                 exit();
             } else {
-                echo json_encode(['success' => false, 'message' => 'Password change failed. Please try again.']);
+                echo json_encode(['success' => false, 'message' => 'НЕ ВДАЛОСЯ ЗМІНИТИ ПАРОЛЬ. БУДЬ ЛАСКА, СПРОБУЙТЕ ЩЕ РАЗ!']);
                 exit();
             }
         } else {
-            echo json_encode(['success' => false, 'message' => 'New password and confirm password do not match.']);
+            echo json_encode(['success' => false, 'message' => 'НОВИЙ ПАРОЛЬ ТА ПАРОЛЬ ПІДТВЕРДЖЕННЯ НЕ ЗБІГАЄТЬСЯ!']);
             exit();
         }
     } else {
-        echo json_encode(['success' => false, 'message' => 'Old password is incorrect.']);
+        echo json_encode(['success' => false, 'message' => 'СТАРИЙ ПАРОЛЬ ВВЕДЕНО НЕПРАВИЛЬНО!']);
         exit();
     }
 }
@@ -86,28 +86,30 @@ if ($result && isset($result['site_shutdown']) && $result['site_shutdown'] == 1)
             <div class="col-md-6">
                 <div class="card">
                     <div class="card-header bg-primary text-white">
-                        <h4 class="mb-0">ИЗМЕНЕНИЕ ПАРОЛЯ</h4>
+                        <h4 class="mb-0">ВІДНОВЛЕННЯ ПАРОЛЯ</h4>
                     </div>
                     <div class="card-body">
                         <div id="changePasswordAlert"></div>
                         <form method="post" id="changePasswordForm">
                             <div class="form-group">
-                                <label for="email">Електронна пошта:</label>
+                                <label for="email">ЕЛЕКТРОННА АДРЕСА : </label>
                                 <input type="email" class="form-control" id="email" name="email" required>
                             </div>
                             <div class="form-group">
-                                <label for="oldPassword">Старий пароль:</label>
+                                <label for="oldPassword">ВВЕДІТЬ СТАРИЙ ПАРОЛЬ : </label>
                                 <input type="password" class="form-control" id="oldPassword" name="oldPassword" required>
                             </div>
                             <div class="form-group">
-                                <label for="newPassword">Новий пароль:</label>
+                                <label for="newPassword">ВВЕДІТЬ НОВИЙ ПАРОЛЬ : </label>
                                 <input type="password" class="form-control" id="newPassword" name="newPassword" required>
                             </div>
                             <div class="form-group">
-                                <label for="confirmPassword">Підтвердження паролю:</label>
+                                <label for="confirmPassword">ПІДТВЕРДИТЬ НОВИЙ ПАРОЛЬ : </label>
                                 <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" required>
                             </div>
-                            <button type="button" class="btn btn-primary" id="changePasswordBtn">Змінити пароль</button>
+                            <div class="d-flex justify-content-center mt-4">
+                                <button type="button" class="btn btn-primary" id="changePasswordBtn">ВІДНОВИТИ ПАРОЛЬ</button>
+                            </div>
                         </form>
                     </div>
                 </div>
@@ -115,13 +117,10 @@ if ($result && isset($result['site_shutdown']) && $result['site_shutdown'] == 1)
         </div>
     </div>
     
-
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 
     <script>
         $(document).ready(function () {
@@ -143,6 +142,4 @@ if ($result && isset($result['site_shutdown']) && $result['site_shutdown'] == 1)
         });
     </script>
 
-</body>
-
-</html>
+</body> </html>

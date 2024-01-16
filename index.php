@@ -99,23 +99,27 @@ if (isset($_GET['alert']) && $_GET['alert'] === 'password_updated') {
                             <h5 class='text-center'>$tour_data[tour_name]</h5>
                             <h6 class='mb-2 text-center'>ЦІНА ТУРУ : $tour_data[tour_price] ₴</h6>
                             <div class="alert alert-primary d-flex align-items-center text-center" role="alert">
-                                <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Info:"> <use xlink:href="#info-fill" /> </svg>
-                                <div> <i class="bi bi-exclamation-octagon"> ВКАЗАНА ЦІНА ТІЛЬКИ ЗА <u>ТУР </u> </i>
+                                <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img"> <use xlink:href="#info-fill"/> </svg>
+                                <div> <i class="bi bi-exclamation-octagon"> ВКАЗАНА ЦІНА ТІЛЬКИ ЗА <u> ТУР </u> </i>
                                 </div>
                             </div>
+
                             <div class="features mb-3">
                                 <h6 class="mb-1">КЛЮЧОВІ ОСОБЛИВОСТІ ДАНОГО ТУРА : </h6>
                                 $features_data
                             </div>
+
                             <div class="peoples mb-3">
                                 <h6 class="mb-1">ДАНИЙ ТУР ОРІЄНТОВАНИЙ НА : </h6>
                                 <span class="badge bg-light text-dark text-wrap">$tour_data[tour_adult] ДОРОСЛИХ</span>
                                 <span class="badge bg-light text-dark text-wrap">$tour_data[tour_children] ДИТИНИ</span>
                             </div>
+
                             <div class="managers mb-3">
                                 <h6 class="mb-1">КІЛЬКІСТЬ ЕКСКУРСОВОДІВ : </h6>
                                 <span class="badge bg-light text-dark text-wrap">$tour_data[tour_area] ЕКСКУРСОВОД / ГІД [ІВ]</span>
                             </div>
+                            
                             <div class="d-flex justify-content-evenly mb-2">
                                 <a href="tour-details.php?tour_id=$tour_data[tour_id]" class="btn btn-sm w-100 btn-outline-dark shadow-none mt-2 ml-2"> ДЕТАЛЬНІШЕ >>> </a>
                             </div>

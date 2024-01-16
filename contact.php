@@ -82,7 +82,7 @@ if ($result && isset($result['site_shutdown']) && $result['site_shutdown'] == 1)
                 </div>
                 <br>
                 <div class="bg-white p-4 rounded mb-4 ml-auto mt-2">
-                    <h5>СОЦІАЛЬНІ МЕРЕЖІ : </h5>
+                    <h5>ПОСИЛАННЯ НА СОЦІАЛЬНІ МЕРЕЖІ :</h5>
                     <a href="#" class="d-inline-block mb-3">
                         <span class="badge bg-light text-dark fs-6 p-2">
                             <i class="bi bi-facebook me-1"></i> <?php echo $contact_r['contact_facebook'] ?>

@@ -48,13 +48,13 @@ if ($result && isset($result['site_shutdown']) && $result['site_shutdown'] == 1)
 ?>
 
 <!DOCTYPE HTML>
-<html lang="UA">
-
+<HTML lang="UA">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <?php require('include/links.php'); ?>
-    <title>ОФОРМЛЕННЯ ТУРУ - DISCOVERING.UA</title>
+    <link rel="shortcut icon" href="https://cdn.icon-icons.com/icons2/1928/PNG/512/iconfinder-compass-direction-maps-holiday-vacation-icon-4602027_122100.png" type="image/x-icon">
+    <title>DISCOVERING.UA</title>
     <style> body { background-color: #f8f9fa; font-family: 'Arial', sans-serif; } .tour-details h2 { color: #007bff; margin-bottom: 10px; text-align: center; } .tour-details hr { margin: 0 auto 20px; border: 1px solid #000; width: 85px; } .tour-details h3 { color: #007bff; margin-bottom: 10px; } .tour-details p { margin-bottom: 15px; } form { margin-top: 20px; } form label { display: block; margin: 10px 0; } form input { width: 100%; padding: 10px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 4px; } form button { background-color: #007bff; color: #fff; padding: 10px 15px; border: none; border-radius: 4px; cursor: pointer; display: block; margin: 0 auto; } form button:hover { background-color: #0056b3; } </style>
 </head>
 
@@ -65,23 +65,23 @@ if ($result && isset($result['site_shutdown']) && $result['site_shutdown'] == 1)
             <hr>
             <div class="row justify-content-center">
                 <div class="col-md-6">
-                    <h3 class="mb-3">НАЗВА ТУРУ: <?php echo $tourData['tour_name']; ?></h3>
-                    <p>ОПИС ТУРУ: <?php echo $tourData['tour_desc']; ?></p>
-                    <p>ЦІНА ТУРУ: <?php echo $tourData['tour_price']; ?>₴</p>
+                    <h3 class="mb-3 text-center">НАЗВА : <?php echo $tourData['tour_name']; ?></h3>
+                    <p class="text-center">ОГОЛОШЕНА ВАРТІСТЬ ТУРУ : <?php echo $tourData['tour_price']; ?> ₴</p>
+                    <p>ОПИС ТУРУ : <?php echo $tourData['tour_desc']; ?></p>
                     <form id="bookingForm">
-                        <label for="cardNumber">Номер банковської карти:</label>
+                        <label for="cardNumber">НОМЕР БАНКІВСЬКОЇ КАРТИ : </label>
                         <input type="text" id="cardNumber" name="cardNumber" required>
 
-                        <label for="expiryMonth">Місяць закінчення терміну дії:</label>
+                        <label for="expiryMonth">МІСЯЦЬ ЗАКІНЧЕННЯ ТЕРМІНУ ДІЇ КАРТКИ : </label>
                         <input type="text" id="expiryMonth" name="expiryMonth" required>
 
-                        <label for="expiryYear">Рік закінчення терміну дії:</label>
+                        <label for="expiryYear">РІК ЗАКІНЧЕННЯ ТЕРМІНУ ДІЇ КАРТКИ : </label>
                         <input type="text" id="expiryYear" name="expiryYear" required>
 
-                        <label for="cvcCode">CVC-код:</label>
+                        <label for="cvcCode">ВВЕДІТЬ CVC-КОД ДО КАРТКИ : </label>
                         <input type="text" id="cvcCode" name="cvcCode" required>
 
-                        <button type="button" id="submitBooking">ОФОРМИТИ ЗАМОВЛЕННЯ</button>
+                        <button type="button" id="submitBooking">ОФОРМИТИ ДАНИЙ ТУР</button>
                     </form>
                 </div>
             </div>
@@ -116,16 +116,16 @@ if ($result && isset($result['site_shutdown']) && $result['site_shutdown'] == 1)
                             } else if (response.status === 'error') {
                                 console.error(response.message);
                             } else {
-                                console.error('Непредвиденный ответ сервера');
+                                console.error('НЕПЕРЕДБАЧЕНА ВІДПОВІДЬ СЕРВЕРА!');
                             }
                         } catch (e) {
-                            console.error('Ошибка обработки ответа сервера');
+                            console.error('ПОМИЛКА ОБРОБКИ ВІДПОВІДІ СЕРВЕРА!');
                         }
                     }
                 };
 
                 xhr.onerror = function () {
-                    console.error('Ошибка отправки запроса');
+                    console.error('ПОМИЛКА НАДСИЛАННЯ ЗАПИТУ!');
                 };
 
                 xhr.send(params);
@@ -136,7 +136,7 @@ if ($result && isset($result['site_shutdown']) && $result['site_shutdown'] == 1)
                 const cardNumberValue = cardNumberInput.value.trim();
 
                 if (cardNumberValue.length > 20) {
-                    console.error('Invalid card number');
+                    console.error('НЕДІЙСНИЙ НОМЕР КАРТКИ!');
                 }
             });
         });
