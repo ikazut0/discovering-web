@@ -122,8 +122,8 @@
                             </div>
                             
                             <div class="mt-5">
-                                <h5>КОМЕНТАРІ : </h5><br>
                                 <div id="comments">
+                                    <h5>КОМЕНТАРІ : </h5><br>
                                     <?php
                                     
                                     $comments_query = selectData("SELECT c.*, u.user_name FROM `tour_comments` c LEFT JOIN `user_info` u ON c.user_id = u.user_id WHERE c.`tour_id`=?", [$tour_data['tour_id']], 'i');

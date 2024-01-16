@@ -1,6 +1,4 @@
-<?php
-include 'admin/include/db_config.php';
-include 'admin/include/essentials.php';
+<?php include 'admin/include/db_config.php'; include 'admin/include/essentials.php';
 
 if(isset($_POST['registerBtn'])) {
     $name = $_POST['name'];
@@ -20,17 +18,19 @@ if(isset($_POST['registerBtn'])) {
         $registerValues = [$name, $email, $phone, $address, $pincode, $dob, $password];
 
         if (insert($registerQuery, $registerValues, 'ssssiss')) {
+
             session_start();
+
             $_SESSION['user_name'] = $name;
+
             $_SESSION['user_email'] = $email;
 
-            header("Location: index.php");
-            exit();
+            header("Location: index.php"); exit();
         } else {
-            alertHeader("Registration failed. Please try again.");
+            alertHeader("ПОМИЛКА РЕЄСТРАЦІЇ. БУДЬ ЛАСКА, СПРОБУЙТЕ ЩЕ РАЗ");
         }
     } else {
-        alertHeader("Email is already registered. Please use a different email.");
+        alertHeader("КОРИСТУВАЧ ВЖЕ ЗАРЕЄСТРОВАНИЙ. ВИКОРИСТОВУЙТЕ ІНШУ ЕЛЕКТРОННУ АДРЕСУ 🤦‍♂️");
     }
 }
 ?>

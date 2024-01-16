@@ -33,13 +33,13 @@ function getUserDetailsByEmail($email)
             $user = mysqli_fetch_assoc($result);
             mysqli_stmt_close($stmt);
             return $user;
-        } else { 
+        } else {
             echo "<script> alert('ПОМИЛКА ВИКОНАННЯ ЗАПИТУ'); </script>" . mysqli_error($connection_info);
         }
     } else {
         echo "<script> alert('ПОМИЛКА ПІДГОТОВКИ ЗВІТУ'); </script>" . mysqli_error($connection_info);
     }
-    return null; 
+    return null;
 }
 
 if ($userLoggedIn) {
@@ -82,7 +82,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['changePasswordBtn'])) 
 ?>
 
 <!DOCTYPE HTML>
-<HTML lang="UA">
+<html lang="UA">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -92,73 +92,60 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['changePasswordBtn'])) 
 </head>
 
 <body class="bg-light"> <?php require('include/header.php'); ?>
-<div class="container mt-4">
-    <div class="row">
-        <div class="col-md-6 offset-md-3">
-            <div class="card">
-
-                <div class="card-body">
-                    <?php if ($userLoggedIn) : ?>
-                        <?php $user = getUserDetailsByEmail($userEmail); if ($user) : ?>
-                            <form id="userDetailsForm" method="post" action="user_details.php">
-
-                                <div class="mb-3">
-                                    <label for="email" class="form-label">ЕЛЕКТРОННА ПОШТА : </label>
-                                    <input type="email" class="form-control" id="email" name="email" value="<?php echo $user['user_email']; ?>" readonly>
-                                </div>
-                                
-                                <div class="mb-3">
-                                    <label for="phone-num" class="form-label">НОМЕР ТЕЛЕФОНУ : </label>
-                                    <input type="phone-num" class="form-control" id="phone-num" name="phone-num" value="<?php echo $user['user_phone']; ?>" readonly>
-                                </div>
-                                
-                                <div class="mb-3">
-                                    <label for="address" class="form-label">МІСЦЕ ПРОЖИВАННЯ : </label>
-                                    <input type="address" class="form-control" id="address" name="address" value="<?php echo $user['user_address']; ?>" readonly>
-                                </div>
-                                
-                                <div class="mb-3">
-                                    <label for="pincode" class="form-label">ПОШТОВИЙ ІНДЕКС : </label>
-                                    <input type="pincode" class="form-control" id="pincode" name="pincode" value="<?php echo $user['user_pincode']; ?>" readonly>
-                                </div>
-                                
-                                <hr> <h5 class="mb-3">ОНОВЛЕННЯ ПАРОЛЯ</h5>
-                                
-                                <div class="mb-3">
-                                    <label for="oldPassword" class="form-label">ВВЕДІТЬ СТАРИЙ ПАРОЛЬ : </label>
-                                    <input type="password" class="form-control" id="oldPassword" name="oldPassword">
-                                </div>
-
-                                <div class="mb-3">
-                                    <label for="newPassword" class="form-label">ВВЕДІТЬ НОВИЙ ПАРОЛЬ : </label>
-                                    <input type="password" class="form-control" id="newPassword" name="newPassword">
-                                </div>
-                                
-                                <div class="mb-3">
-                                    <label for="confirmPassword" class="form-label">ПІДТВЕРДЬТЕ НОВИЙ ПАРОЛЬ : </label>
-                                    <input type="password" class="form-control" id="confirmPassword" name="confirmPassword">
-                                </div>
-                                
-                                <div class="d-grid gap-2">
-                                    <button type="submit" class="btn btn-primary mb-3" name="changePasswordBtn">ОНОВИТИ ПАРОЛЬ</button>
-                                </div> </form>
-                                
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <div class="card">
+                    <div class="card-body">
+                        <?php if ($userLoggedIn) : ?>
+                            <?php $user = getUserDetailsByEmail($userEmail); if ($user) : ?>
+                                <form id="userDetailsForm" method="post" action="user_details.php">
+                                    <div class="mb-3">
+                                        <label for="email" class="form-label">ЕЛЕКТРОННА ПОШТА : </label>
+                                        <input type="email" class="form-control" id="email" name="email" value="<?php echo $user['user_email']; ?>" readonly>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="phone-num" class="form-label">НОМЕР ТЕЛЕФОНУ : </label>
+                                        <input type="phone-num" class="form-control" id="phone-num" name="phone-num" value="<?php echo $user['user_phone']; ?>" readonly>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="address" class="form-label">МІСЦЕ ПРОЖИВАННЯ : </label>
+                                        <input type="address" class="form-control" id="address" name="address" value="<?php echo $user['user_address']; ?>" readonly>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="pincode" class="form-label">ПОШТОВИЙ ІНДЕКС : </label>
+                                        <input type="pincode" class="form-control" id="pincode" name="pincode" value="<?php echo $user['user_pincode']; ?>" readonly>
+                                    </div>
+                                    <hr>
+                                    <h5 class="mb-3">ОНОВЛЕННЯ ПАРОЛЯ</h5>
+                                    <div class="mb-3">
+                                        <label for="oldPassword" class="form-label">ВВЕДІТЬ СТАРИЙ ПАРОЛЬ : </label>
+                                        <input type="password" class="form-control" id="oldPassword" name="oldPassword">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="newPassword" class="form-label">ВВЕДІТЬ НОВИЙ ПАРОЛЬ : </label>
+                                        <input type="password" class="form-control" id="newPassword" name="newPassword">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="confirmPassword" class="form-label">ПІДТВЕРДЬТЕ НОВИЙ ПАРОЛЬ : </label>
+                                        <input type="password" class="form-control" id="confirmPassword" name="confirmPassword">
+                                    </div>
+                                    <div class="d-grid gap-2">
+                                        <button type="submit" class="btn btn-primary mb-3" name="changePasswordBtn">ОНОВИТИ ПАРОЛЬ</button>
+                                    </div>
+                                </form>
                                 <form method="post" action="user_details.php">
                                     <div class="d-grid gap-2">
                                         <button type="submit" class="btn btn-danger" name="logoutBtn">ВИЙТИ З ОБЛІКОВОГО ЗАПИСУ</button>
                                     </div>
                                 </form>
-                                
-                                <?php else : ?>
-                                    <p class="text-danger text-center">ПОМИЛКА ОТРИМАННЯ ІНФОРМАЦІЇ ПРО ВАС 🤦‍♂️</p>
-                                <?php endif; ?>
-
-                                <?php else : ?>
-                                    <p class="text-warning text-center">ВИ НЕ АВТОРИЗОВАНІ В СИСТЕМІ 🤦‍♂️</p>
-                                    <p class="text-info text-center">НАТИСНІТЬ КНОПКУ "АВТОРИЗАЦІЯ", ЩОБ ВВІЙТИ В ОБЛІКОВИЙ ЗАПИС</p>
-                                <?php endif; ?>
-                            </div>
-                        </div>
+                            <?php else : ?>
+                                <p class="text-danger text-center">ПОМИЛКА ОТРИМАННЯ ІНФОРМАЦІЇ ПРО ВАС 🤦‍♂️</p>
+                            <?php endif; ?>
+                        <?php else : ?>
+                            <p class="text-warning text-center">ВИ НЕ АВТОРИЗОВАНІ В СИСТЕМІ 🤦‍♂️</p>
+                            <p class="text-info text-center">НАТИСНІТЬ КНОПКУ "АВТОРИЗАЦІЯ", ЩОБ ВВІЙТИ В ОБЛІКОВИЙ ЗАПИС</p>
+                        <?php endif; ?>
                     </div>
                 </div>
             </div>

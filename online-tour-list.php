@@ -1,12 +1,13 @@
-<?php require('admin/include/db_config.php'); require('admin/include/essentials.php'); ?>
+<?php require('admin/include/db_config.php'); require('admin/include/essentials.php'); session_start(); ?>
 
 <!DOCTYPE HTML>
-<html lang="UA">
+<HTML lang="UA">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <?php require('include/links.php'); ?>
-    <title>DISCOVERING.UA - МАНДРУЙ УКРАЇНОЮ</title>
+    <link rel="shortcut icon" href="https://cdn.icon-icons.com/icons2/1928/PNG/512/iconfinder-compass-direction-maps-holiday-vacation-icon-4602027_122100.png" type="image/x-icon">
+    <title>DISCOVERING.UA</title>
 </head>
 
 <body class="bg-light"> <?php require 'include/header.php'; ?>
@@ -40,6 +41,12 @@
             </div>
         </div>
     </div>
+</div>
+
+<div class="container">
+    <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+        <p class="col-md-4 mb-0 text-muted">© 2024 DISCOVERING.UA, INC</p><a class="col-md-4 d-flex align-items-center justify-content-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none"><img class="bi me-2" width="70" height="32" src="images/footer-logo.png"></a>
+    </footer>
 </div>
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>

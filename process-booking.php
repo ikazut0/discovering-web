@@ -1,67 +1,54 @@
-<?php
-session_start();
-require('admin/include/db_config.php');
-require('admin/include/essentials.php');
+<?php require('admin/include/db_config.php'); require('admin/include/essentials.php'); session_start();
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Проверяем, авторизован ли пользователь
     if (!isset($_SESSION['user_email'])) {
-        echo json_encode(['status' => 'error', 'message' => 'Пользователь не авторизован']);
+        echo json_encode(['status' => 'error', 'message' => 'КОРИСТУВАЧ НЕ АВТОРИЗОВАНИЙ!']);
         exit;
     }
 
-    // Получаем данные из формы
     $userEmail = $_SESSION['user_email'];
     $tourId = isset($_POST['tour_id']) ? $_POST['tour_id'] : null;
 
-    // Проверяем, передан ли ID тура
     if ($tourId !== null) {
-        // Получаем остальные данные из формы
         $cardNumber = $_POST['cardNumber'];
         $expiryMonth = $_POST['expiryMonth'];
         $expiryYear = $_POST['expiryYear'];
         $cvcCode = $_POST['cvcCode'];
 
-        // Дополнительная валидация данных
         if (empty($cardNumber) || empty($expiryMonth) || empty($expiryYear) || empty($cvcCode)) {
-            echo json_encode(['status' => 'error', 'message' => 'Все поля должны быть заполнены']);
+            echo json_encode(['status' => 'error', 'message' => 'УСІ ПОЛЯ МАЮТЬ БУТИ ЗАПОВНЕНІ!']);
             exit;
         }
 
-        // Дополнительная валидация данных о карте
         if (!is_numeric($cardNumber) || !is_numeric($expiryMonth) || !is_numeric($expiryYear) || !is_numeric($cvcCode)) {
-            echo json_encode(['status' => 'error', 'message' => 'Некорректные данные о банковской карте']);
+            echo json_encode(['status' => 'error', 'message' => 'НЕКОРЕКТНІ ДАНІ ПРО БАНКІВСЬКУ КАРТКУ!']);
             exit;
         }
 
-        // Получаем информацию о пользователе
         $userInfo = getUserInfoByEmail($userEmail);
 
-        // Проверяем, существует ли информация о пользователе
         if (!$userInfo) {
-            echo json_encode(['status' => 'error', 'message' => 'Информация о пользователе не найдена']);
+            echo json_encode(['status' => 'error', 'message' => 'ІНФОРМАЦІЯ ПРО КОРИСТУВАЧА НЕ ЗНАЙДЕНА!']);
             exit;
         }
 
-        // Вставляем данные о бронировании в базу данных
         $query = "INSERT INTO user_booking_info (user_id, tour_id, card_number, expiry_month, expiry_year, cvc_code) VALUES (?, ?, ?, ?, ?, ?)";
         $values = [$userInfo['user_id'], $tourId, $cardNumber, $expiryMonth, $expiryYear, $cvcCode];
         $result = insert($query, $values, 'iisiii');
 
         if ($result) {
-            echo json_encode(['status' => 'success', 'message' => 'Бронирование успешно оформлено']);
+            echo json_encode(['status' => 'success', 'message' => 'БРОНЮВАННЯ УСПІШНО ОФОРМЛЕНО!']);
             exit;
         } else {
-            echo json_encode(['status' => 'error', 'message' => 'Ошибка при сохранении данных о бронировании']);
+            echo json_encode(['status' => 'error', 'message' => 'ПОМИЛКА ЗБЕРЕЖЕННЯ ДАНИХ ПРО БРОНЮВАННЯ!']);
             exit;
         }
     } else {
-        echo json_encode(['status' => 'error', 'message' => 'Tour ID is missing']);
+        echo json_encode(['status' => 'error', 'message' => 'ІДЕНТИФІКАТОР ТУРУ ВІДСУТНІЙ!']);
         exit;
     }
 } else {
-    // Если запрос не является POST-запросом, возвращаем ошибку
-    echo json_encode(['status' => 'error', 'message' => 'Недопустимый метод запроса']);
+    echo json_encode(['status' => 'error', 'message' => 'НЕПРИПУСТИМИЙ МЕТОД ЗАПИТУ!']);
     exit;
 }
 ?>

@@ -1,6 +1,4 @@
-<?php
-include 'admin/include/db_config.php';
-include 'admin/include/essentials.php';
+<?php include 'admin/include/db_config.php'; include 'admin/include/essentials.php';
 
 if (isset($_POST['loginBtn'])) {
     $loginEmail = $_POST['login_email'];
@@ -17,7 +15,7 @@ if (isset($_POST['loginBtn'])) {
         header("Location: index.php");
         exit();
     } else {
-        alertHeader("Невірна електронна пошта або пароль.");
+        alertHeader("НЕВІРНА ЕЛЕКТРОННА ПОШТА АБО ПАРОЛЬ 😭");
     }
 }
 ?>
