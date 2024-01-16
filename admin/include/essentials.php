@@ -97,34 +97,6 @@ function uploadUserImage($image) {
     }
 }
 
-if (!function_exists('uploadUserImage')) {
-function addToFavorites($tour_id, $user_id)
-{
-    // Проверяем, не добавлен ли тур уже в избранное
-    $checkQuery = "SELECT * FROM user_favorites WHERE user_id=? AND tour_id=?";
-    $checkValues = [$user_id, $tour_id];
-    $checkResult = selectData($checkQuery, $checkValues, 'ii');
-
-    if (mysqli_num_rows($checkResult) == 0) {
-        // Тур еще не добавлен в избранное, добавляем
-        $insertQuery = "INSERT INTO user_favorites (user_id, tour_id) VALUES (?, ?)";
-        $insertValues = [$user_id, $tour_id];
-        $insertResult = insertData($insertQuery, $insertValues, 'ii');
-
-        if ($insertResult) {
-            // Успешное добавление в избранное
-            echo "Tour added to favorites!";
-        } else {
-            // Ошибка добавления
-            echo "Error adding to favorites.";
-        }
-    } else {
-        // Тур уже в избранном
-        echo "Tour already in favorites.";
-    }
-}
-}
-
 if (!function_exists('getUserInfoByEmail')) {
 function getUserInfoByEmail($email)
 {

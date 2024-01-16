@@ -24,13 +24,7 @@
             <div class="collapse navbar-collapse flex-column align-items-stretch mt-2" id="adminDropdown">
                 <ul class="nav nav-pills flex-column">
                     <li class="nav-item">
-                        <a class="nav-link text-light" href="dashboard.php">🧰 ПАНЕЛЬ УПРАВЛІННЯ</a>
-                    </li>
-                    <li class="nav-item">
                         <a class="nav-link text-light" href="tours.php">🚞 СПИСОК ТУРІВ</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-light" href="#">🧑‍💻 КОРИСТУВАЧІ САЙТУ</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link text-light" href="facilities.php">🧑‍💻 FACILITIES</a>

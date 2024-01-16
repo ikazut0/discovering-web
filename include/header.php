@@ -68,7 +68,6 @@ $title_r = mysqli_fetch_assoc(selectData($title_q, $values, 'i'));
 
     .navbar-nav {
         display: flex;
-        align-items: center;
     }
     .container {
         font-size: 80%; /* Уменьшаем размер шрифта на 90% */

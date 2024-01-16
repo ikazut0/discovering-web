@@ -12,8 +12,7 @@ if (isset($_POST['loginBtn'])) {
         session_start();
         $_SESSION['user_name'] = $userData['user_name'];
         $_SESSION['user_email'] = $userData['user_email'];
-        header("Location: index.php");
-        exit();
+        header("Location: index.php"); exit();
     } else {
         alertHeader("НЕВІРНА ЕЛЕКТРОННА ПОШТА АБО ПАРОЛЬ 😭");
     }

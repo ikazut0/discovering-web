@@ -26,8 +26,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $insert_comment = $connection_info->query("INSERT INTO `tour_comments` (`tour_id`, `user_id`, `comment_text`) VALUES ('$tour_id', '$user_id', '$comment_text')");
 
         if ($insert_comment) {
-            header("Location: tour-details.php?tour_id=$tour_id");
-            exit();
+            header("Location: tour-details.php?tour_id=$tour_id"); exit();
         } else {
             echo "ПОМИЛКА ДОДАВАННЯ КОМЕНТАРЯ : " . $connection_info->error;
         }

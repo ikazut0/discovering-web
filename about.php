@@ -1,4 +1,31 @@
-<?php require('admin/include/db_config.php'); require('admin/include/essentials.php'); ?>
+<?php require('admin/include/db_config.php'); require('admin/include/essentials.php'); 
+
+$query = "SELECT `site_shutdown` FROM `admin_settings` WHERE `settings_id`=?";
+$values = [1];
+
+$mysqli = new mysqli("localhost", "root", "", "tourdb");
+
+if ($mysqli->connect_error) {
+    die("ПІДКЛЮЧЕННЯ НЕ ВДАЛОСЯ : " . $mysqli->connect_error);
+}
+
+$stmt = $mysqli->prepare($query);
+$stmt->bind_param('i', ...$values);
+
+$stmt->execute();
+
+$result = $stmt->get_result()->fetch_assoc();
+
+$stmt->close();
+$mysqli->close();
+
+if ($result && isset($result['site_shutdown']) && $result['site_shutdown'] == 1) {
+    echo '<div style="display: flex; justify-content: center; align-items: center; height: 100vh;">';
+    echo '<img src="https://media.giphy.com/avatars/404academy/kGwR3uDrUKPI.gif" style="max-width: 100%; max-height: 100%;"/>';
+    echo '</div>'; exit;
+}
+
+?>
 
 <!DOCTYPE HTML>
 <html lang="UA">

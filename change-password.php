@@ -1,6 +1,4 @@
-<?php
-include 'admin/include/db_config.php';
-include 'admin/include/essentials.php';
+<?php include 'admin/include/db_config.php';include 'admin/include/essentials.php';
 
 function verifyOldPassword($email, $oldPassword) {
     $getUserQuery = "SELECT * FROM `user_info` WHERE `user_email`=?";
@@ -43,20 +41,46 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         exit();
     }
 }
+
+$query = "SELECT `site_shutdown` FROM `admin_settings` WHERE `settings_id`=?";
+$values = [1];
+
+$mysqli = new mysqli("localhost", "root", "", "tourdb");
+
+if ($mysqli->connect_error) {
+    die("ПІДКЛЮЧЕННЯ НЕ ВДАЛОСЯ : " . $mysqli->connect_error);
+}
+
+$stmt = $mysqli->prepare($query);
+$stmt->bind_param('i', ...$values);
+
+$stmt->execute();
+
+$result = $stmt->get_result()->fetch_assoc();
+
+$stmt->close();
+$mysqli->close();
+
+if ($result && isset($result['site_shutdown']) && $result['site_shutdown'] == 1) {
+    echo '<div style="display: flex; justify-content: center; align-items: center; height: 100vh;">';
+    echo '<img src="https://media.giphy.com/avatars/404academy/kGwR3uDrUKPI.gif" style="max-width: 100%; max-height: 100%;"/>';
+    echo '</div>'; exit;
+}
+
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
-
+<!DOCTYPE HTML>
+<HTML lang="UA">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Password Change</title>
+    <?php require('include/links.php'); ?>
+    <link rel="shortcut icon" href="https://cdn.icon-icons.com/icons2/1928/PNG/512/iconfinder-compass-direction-maps-holiday-vacation-icon-4602027_122100.png" type="image/x-icon">
+    <title>DISCOVERING.UA</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 </head>
 
 <body>
-
     <div class="container mt-5">
         <div class="row justify-content-center">
             <div class="col-md-6">

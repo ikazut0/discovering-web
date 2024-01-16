@@ -2,8 +2,7 @@
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (!isset($_SESSION['user_email'])) {
-        echo json_encode(['status' => 'error', 'message' => 'КОРИСТУВАЧ НЕ АВТОРИЗОВАНИЙ!']);
-        exit;
+        echo json_encode(['status' => 'error', 'message' => 'КОРИСТУВАЧ НЕ АВТОРИЗОВАНИЙ!']); exit;
     }
 
     $userEmail = $_SESSION['user_email'];
@@ -16,20 +15,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $cvcCode = $_POST['cvcCode'];
 
         if (empty($cardNumber) || empty($expiryMonth) || empty($expiryYear) || empty($cvcCode)) {
-            echo json_encode(['status' => 'error', 'message' => 'УСІ ПОЛЯ МАЮТЬ БУТИ ЗАПОВНЕНІ!']);
-            exit;
+            echo json_encode(['status' => 'error', 'message' => 'УСІ ПОЛЯ МАЮТЬ БУТИ ЗАПОВНЕНІ!']); exit;
         }
 
         if (!is_numeric($cardNumber) || !is_numeric($expiryMonth) || !is_numeric($expiryYear) || !is_numeric($cvcCode)) {
-            echo json_encode(['status' => 'error', 'message' => 'НЕКОРЕКТНІ ДАНІ ПРО БАНКІВСЬКУ КАРТКУ!']);
-            exit;
+            echo json_encode(['status' => 'error', 'message' => 'НЕКОРЕКТНІ ДАНІ ПРО БАНКІВСЬКУ КАРТКУ!']); exit;
+        }
+
+        if (strlen($cardNumber) > 15 || !(strlen($cvcCode) === 3 || strlen($cvcCode) === 4) || strlen($expiryMonth) > 2 || strlen($expiryYear) !== 4) {
+            echo json_encode(['status' => 'error', 'message' => 'НОМЕР КАРТКИ НЕ ПОВИНЕН ПЕРЕВИЩУВАТИ 15 ЦИФР, А CVC-КОД - 3 : 4 ЦИФРИ!']); exit;
         }
 
         $userInfo = getUserInfoByEmail($userEmail);
 
         if (!$userInfo) {
-            echo json_encode(['status' => 'error', 'message' => 'ІНФОРМАЦІЯ ПРО КОРИСТУВАЧА НЕ ЗНАЙДЕНА!']);
-            exit;
+            echo json_encode(['status' => 'error', 'message' => 'ІНФОРМАЦІЯ ПРО КОРИСТУВАЧА НЕ ЗНАЙДЕНА!']); exit;
         }
 
         $query = "INSERT INTO user_booking_info (user_id, tour_id, card_number, expiry_month, expiry_year, cvc_code) VALUES (?, ?, ?, ?, ?, ?)";
@@ -37,18 +37,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $result = insert($query, $values, 'iisiii');
 
         if ($result) {
-            echo json_encode(['status' => 'success', 'message' => 'БРОНЮВАННЯ УСПІШНО ОФОРМЛЕНО!']);
-            exit;
+            echo json_encode(['status' => 'success', 'message' => 'БРОНЮВАННЯ УСПІШНО ОФОРМЛЕНО!']); exit;
         } else {
-            echo json_encode(['status' => 'error', 'message' => 'ПОМИЛКА ЗБЕРЕЖЕННЯ ДАНИХ ПРО БРОНЮВАННЯ!']);
-            exit;
+            echo json_encode(['status' => 'error', 'message' => 'ПОМИЛКА ЗБЕРЕЖЕННЯ ДАНИХ ПРО БРОНЮВАННЯ!']); exit;
         }
     } else {
-        echo json_encode(['status' => 'error', 'message' => 'ІДЕНТИФІКАТОР ТУРУ ВІДСУТНІЙ!']);
-        exit;
+        echo json_encode(['status' => 'error', 'message' => 'ІДЕНТИФІКАТОР ТУРУ ВІДСУТНІЙ!']); exit;
     }
 } else {
-    echo json_encode(['status' => 'error', 'message' => 'НЕПРИПУСТИМИЙ МЕТОД ЗАПИТУ!']);
-    exit;
+    echo json_encode(['status' => 'error', 'message' => 'НЕПРИПУСТИМИЙ МЕТОД ЗАПИТУ!']); exit;
 }
 ?>

@@ -1,33 +1,51 @@
-<?php require('admin/include/db_config.php'); require('admin/include/essentials.php');
+<?php require('admin/include/db_config.php'); require('admin/include/essentials.php'); session_start();
 
 $contact_q = "SELECT * FROM `admin_contact` WHERE `contact_id`=?";
 $values = [1];
 $contact_r = mysqli_fetch_assoc(selectData($contact_q, $values, 'i'));
 
+$query = "SELECT `site_shutdown` FROM `admin_settings` WHERE `settings_id`=?";
+$values = [1];
+
+$mysqli = new mysqli("localhost", "root", "", "tourdb");
+
+if ($mysqli->connect_error) {
+    die("ПІДКЛЮЧЕННЯ НЕ ВДАЛОСЯ : " . $mysqli->connect_error);
+}
+
+$stmt = $mysqli->prepare($query);
+$stmt->bind_param('i', ...$values);
+
+$stmt->execute();
+
+$result = $stmt->get_result()->fetch_assoc();
+
+$stmt->close();
+$mysqli->close();
+
+if ($result && isset($result['site_shutdown']) && $result['site_shutdown'] == 1) {
+    echo '<div style="display: flex; justify-content: center; align-items: center; height: 100vh;">';
+    echo '<img src="https://media.giphy.com/avatars/404academy/kGwR3uDrUKPI.gif" style="max-width: 100%; max-height: 100%;"/>';
+    echo '</div>'; exit;
+}
+
 ?>
 
 <!DOCTYPE HTML>
-<html lang="UA">
+<HTML lang="UA">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <?php require('include/links.php'); ?>
-    <title>DISCOVERING.UA - МАНДРУЙ УКРАЇНОЮ</title>
-    <style>
-        .alert-center {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-        }
-    </style>
+    <link rel="shortcut icon" href="https://cdn.icon-icons.com/icons2/1928/PNG/512/iconfinder-compass-direction-maps-holiday-vacation-icon-4602027_122100.png" type="image/x-icon">
+    <title>DISCOVERING.UA</title>
+    <style> .alert-center { position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); } </style>
 </head>
 
-<body class="bg-light">
-    <?php require('include/header.php'); ?>
+<body class="bg-light"> <?php require('include/header.php'); ?>
 
     <div class="my-5 px-4">
-        <h2 class="fw-bold h-font text-center">КОНТАКТИ</h2>
+        <h2 class="fw-bold h-font text-center">ЗВОРОТНИЙ ЗВ'ЯЗОК</h2>
         <hr class="mx-auto my-3" style="border: 1px solid #000; width: 85px;">
     </div>
 
@@ -36,14 +54,14 @@ $contact_r = mysqli_fetch_assoc(selectData($contact_q, $values, 'i'));
             <div class="col-lg-6 col-md-6 mb-5 px-4">
                 <div class="bg-white rounded shadow p-4 d-flex flex-column align-items-start">
                     <iframe class="w-100 rounded mb-4" height="320px" src="<?php echo $contact_r['contact_iframe'] ?>" width="600" height="450" style="border:0;" allowfullscreen=""></iframe>
-                    <h5 class="mb-0">РОЗТАШУВАННЯ :</h5>
+                    <h5 class="mb-0">РОЗТАШУВАННЯ ГОЛОВНОГО ОФІСУ : </h5>
                     <br>
                     <p class="mb-0 d-flex align-items-center">
                         <img src="https://media4.giphy.com/media/3BMX9JtQImFgdbZbIV/giphy.gif?cid=82a1493bhdf7lv70mm6kma7zdxjiuczb3i8tvj4ao73d50iq&ep=v1_gifs_search&rid=giphy.gif&ct=s" width="18" height="18" class="mr-3">
                         <?php echo $contact_r['contact_address'] ?>
                     </p>
                     <br>
-                    <h5 class="mb-0">ТЕЛЕФОН :</h5>
+                    <h5 class="mb-0">НОМЕРА ТЕЛЕФОНІВ ДЛЯ ЗВОРОТНОГО ЗВ'ЯЗКУ : </h5>
                     <br>
                     <a class="d-inline-block mb-2 text-decoration-none text-dark">
                         <i class="bi bi-telephone-fill"></i> +<?php echo $contact_r['contact_phone_one'] ?>
@@ -56,7 +74,7 @@ $contact_r = mysqli_fetch_assoc(selectData($contact_q, $values, 'i'));
                     }
                     ?>
                     <br>
-                    <h5 class="mb-0">ЕЛ. АДРЕСА :</h5>
+                    <h5 class="mb-0">ЕЛ. АДРЕСА ДЛЯ ЗВОРОТНОГО ЗВ'ЯЗКУ : </h5>
                     <br>
                     <a href="mailto: <?php echo $contact_r['contact_email'] ?>" class="d-inline-block mb-2 text-decoration-none text-dark">
                         <i class="bi bi-envelope-at-fill"></i> <?php echo $contact_r['contact_email'] ?>
@@ -64,7 +82,7 @@ $contact_r = mysqli_fetch_assoc(selectData($contact_q, $values, 'i'));
                 </div>
                 <br>
                 <div class="bg-white p-4 rounded mb-4 ml-auto mt-2">
-                    <h5>F :</h5>
+                    <h5>СОЦІАЛЬНІ МЕРЕЖІ : </h5>
                     <a href="#" class="d-inline-block mb-3">
                         <span class="badge bg-light text-dark fs-6 p-2">
                             <i class="bi bi-facebook me-1"></i> <?php echo $contact_r['contact_facebook'] ?>
@@ -86,7 +104,6 @@ $contact_r = mysqli_fetch_assoc(selectData($contact_q, $values, 'i'));
             <div class="col-lg-6 col-md-6 mb-5 px-4">
                 <div class="bg-white rounded shadow p-4 d-flex flex-column">
                     <form method="POST">
-                        <h5 class="mb-0">ЗВОРОТНИЙ ЗВ'ЯЗОК :</h5>
                         <div class="mt-3">
                             <label class="form-label" style="font-weight: 500;">ПРІЗВИЩЕ ІМ'Я ТА ПО БАТЬКОВІ :</label>
                             <input name="name" required type="text" class="form-control shadow-none">

@@ -13,7 +13,6 @@ if (!$connection_info) {
     die("НЕ ВДАЛОСЯ ОТРИМАТИ ІНФОРМАЦІЮ З БАЗИ ДАНИХ. БУДЬ ЛАСКА, ЗВ'ЯЖІТЬСЯ С АДМІНІСТРАЦІЄЮ САЙТУ DISCOVERING.UA" . mysqli_connect_error());
 }
 
-// Проверка, существует ли уже функция filtrationData
 if (!function_exists('filtrationData')) {
     function filtrationData($data)
     {
@@ -28,7 +27,6 @@ if (!function_exists('filtrationData')) {
     }
 }
 
-// Проверка, существует ли уже функция selectData
 if (!function_exists('selectData')) {
     function selectData($sql, $values, $data_types)
     {
@@ -49,7 +47,6 @@ if (!function_exists('selectData')) {
     }
 }
 
-// Проверка, существует ли уже функция selectAll
 if (!function_exists('selectAll')) {
     function selectAll($table)
     {
@@ -59,7 +56,6 @@ if (!function_exists('selectAll')) {
     }
 }
 
-// Проверка, существует ли уже функция updateData
 if (!function_exists('updateData')) {
     function updateData($sql, $values, $data_types)
     {
@@ -80,7 +76,6 @@ if (!function_exists('updateData')) {
     }
 }
 
-// Проверка, существует ли уже функция insert
 if (!function_exists('insert')) {
     function insert($sql, $values, $data_types)
     {
@@ -101,7 +96,6 @@ if (!function_exists('insert')) {
     }
 }
 
-// Проверка, существует ли уже функция delete
 if (!function_exists('delete')) {
     function delete($sql, $values, $data_types)
     {

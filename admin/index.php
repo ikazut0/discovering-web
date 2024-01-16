@@ -59,7 +59,7 @@ if ((isset($_SESSION['adminLoginCheck']) && $_SESSION['adminLoginCheck'] == true
             $row = mysqli_fetch_assoc($result);
             $_SESSION['adminLoginCheck'] = true;
             $_SESSION['adminID'] = $row['admin_id'];
-            adminHome('dashboard.php');
+            adminHome('settings.php');
         } else {
             echo '<div id="myAlert" class="alert alert-danger alert-center-top alert-dismissible fade show text-center position-fixed" role="alert">';
             echo '<strong>НЕ ПРАВИЛЬНИЙ ЛОГІН, АБО ПАРОЛЬ! ЛОГІН АДМІНІСТРАТОРА, АБО ПАРОЛЬ ЩО ВИ ВКАЗАЛИ - НЕ ВІРНІ 🥹. СПРОБУЙТЕ ЩЕ РАЗ.</strong>';
