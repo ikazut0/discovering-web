@@ -1,4 +1,5 @@
 <?php
+
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
@@ -10,69 +11,10 @@ $userName = $userLoggedIn ? $_SESSION['user_name'] : '';
 $title_q = "SELECT * FROM `admin_settings` WHERE `settings_id`=?";
 $values = [1];
 $title_r = mysqli_fetch_assoc(selectData($title_q, $values, 'i'));
+
 ?>
 
-<style>
-    body {
-        font-size: 16px;
-    }
-
-    @media (max-width: 768px) {
-        body {
-            font-size: 14px;
-        }
-
-        .navbar-brand {
-            font-size: 1.5rem;
-        }
-
-        .navbar-nav .nav-link {
-            font-size: 0.9rem;
-        }
-
-        .btn {
-            font-size: 0.9rem;
-        }
-
-        .modal-title {
-            font-size: 1.2rem;
-        }
-
-        .modal-body {
-            font-size: 0.9rem;
-        }
-
-        .modal-header, .modal-footer {
-            padding: 0.5rem;
-        }
-    }
-
-    /* Add this style to prevent line breaks within a single word */
-    .navbar-nav .nav-link,
-    .navbar-brand,
-    .btn {
-        white-space: nowrap;
-    }
-
-    /* Center and move everything to the right in header */
-    header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding-right: 15px; /* Adjust as needed */
-    }
-
-    .navbar-collapse {
-        margin-left: auto;
-    }
-
-    .navbar-nav {
-        display: flex;
-    }
-    .container {
-        font-size: 80%; /* Уменьшаем размер шрифта на 90% */
-    }
-</style>
+<style>body{font-size:16px;}@media (max-width:768px){body{font-size:14px;}.navbar-brand{font-size:1.5rem;}.navbar-nav .nav-link{font-size:0.9rem;}.btn{font-size:0.9rem;}.modal-title{font-size:1.2rem;}.modal-body{font-size:0.9rem;}.modal-header,.modal-footer{padding:0.5rem;}}.navbar-nav .nav-link,.navbar-brand,.btn{white-space:nowrap;}header{display:flex;justify-content:space-between;align-items:center;padding-right:15px;}.navbar-collapse{margin-left:auto;}.navbar-nav{display:flex;}.container{font-size:80%;}</style>
 
 <nav class="navbar navbar-expand-lg navbar-light bg-white px-lg-3 py-lg-2 shadow-sm sticky-top">
     <div class="container">
@@ -110,23 +52,20 @@ $title_r = mysqli_fetch_assoc(selectData($title_q, $values, 'i'));
                 </li>
             </ul>
             <div class="d-flex">
-    <?php if ($userLoggedIn) { ?>
-        <a href="user_details.php" class="text-decoration-none">
-            <span class="me-lg-3 me-2" style="white-space: nowrap;">👋 Привіт, <?php echo $userName; ?></span>
-        </a>
-    <?php } else { ?>
-        <button type="button" class="btn btn-outline-dark shadow-none me-2" data-bs-toggle="modal" data-bs-target="#loginModal"> АВТОРИЗАЦІЯ </button>
-        <button type="button" class="btn btn-outline-dark shadow-none" data-bs-toggle="modal" data-bs-target="#registerModal"> РЕЄСТРАЦІЯ </button>
-    <?php } ?>
-</div>
-
+                <?php if ($userLoggedIn) { ?>
+                    <a href="user_details.php" class="text-decoration-none">
+                        <span class="me-lg-3 me-2" style="white-space: nowrap;">👋 Привіт, <?php echo $userName; ?></span>
+                    </a>
+                <?php } else { ?>
+                    <button type="button" class="btn btn-outline-dark shadow-none me-2" data-bs-toggle="modal" data-bs-target="#loginModal"> АВТОРИЗАЦІЯ </button>
+                    <button type="button" class="btn btn-outline-dark shadow-none" data-bs-toggle="modal" data-bs-target="#registerModal"> РЕЄСТРАЦІЯ </button>
+                <?php } ?>
+            </div>
         </div>
     </div>
 </nav>
 
-
 <?php if (!$userLoggedIn) { ?>
-    <!-- Login Modal -->
     <div class="modal fade" id="loginModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">

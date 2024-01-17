@@ -54,14 +54,14 @@ if ($result && isset($result['site_shutdown']) && $result['site_shutdown'] == 1)
             <div class="col-lg-6 col-md-6 mb-5 px-4">
                 <div class="bg-white rounded shadow p-4 d-flex flex-column align-items-start">
                     <iframe class="w-100 rounded mb-4" height="320px" src="<?php echo $contact_r['contact_iframe'] ?>" width="600" height="450" style="border:0;" allowfullscreen=""></iframe>
-                    <h5 class="mb-0">РОЗТАШУВАННЯ ГОЛОВНОГО ОФІСУ : </h5>
+                    <h5 class="mb-0" style="font-size: 13px;">РОЗТАШУВАННЯ ГОЛОВНОГО ОФІСУ : </h5>
                     <br>
                     <p class="mb-0 d-flex align-items-center">
                         <img src="https://media4.giphy.com/media/3BMX9JtQImFgdbZbIV/giphy.gif?cid=82a1493bhdf7lv70mm6kma7zdxjiuczb3i8tvj4ao73d50iq&ep=v1_gifs_search&rid=giphy.gif&ct=s" width="18" height="18" class="mr-3">
                         <?php echo $contact_r['contact_address'] ?>
                     </p>
                     <br>
-                    <h5 class="mb-0">НОМЕРА ТЕЛЕФОНІВ ДЛЯ ЗВОРОТНОГО ЗВ'ЯЗКУ : </h5>
+                    <h5 class="mb-0" style="font-size: 13px;">НОМЕРА ТЕЛЕФОНІВ : </h5>
                     <br>
                     <a class="d-inline-block mb-2 text-decoration-none text-dark">
                         <i class="bi bi-telephone-fill"></i> +<?php echo $contact_r['contact_phone_one'] ?>
@@ -74,7 +74,7 @@ if ($result && isset($result['site_shutdown']) && $result['site_shutdown'] == 1)
                     }
                     ?>
                     <br>
-                    <h5 class="mb-0">ЕЛ. АДРЕСА ДЛЯ ЗВОРОТНОГО ЗВ'ЯЗКУ : </h5>
+                    <h5 class="mb-0" style="font-size: 13px;">ЕЛ. АДРЕСА ДЛЯ ЗВОРОТНОГО ЗВ'ЯЗКУ : </h5>
                     <br>
                     <a href="mailto: <?php echo $contact_r['contact_email'] ?>" class="d-inline-block mb-2 text-decoration-none text-dark">
                         <i class="bi bi-envelope-at-fill"></i> <?php echo $contact_r['contact_email'] ?>
@@ -82,7 +82,7 @@ if ($result && isset($result['site_shutdown']) && $result['site_shutdown'] == 1)
                 </div>
                 <br>
                 <div class="bg-white p-4 rounded mb-4 ml-auto mt-2">
-                    <h5>ПОСИЛАННЯ НА СОЦІАЛЬНІ МЕРЕЖІ :</h5>
+                    <h5 style="font-size: 13px;">ПОСИЛАННЯ НА СОЦІАЛЬНІ МЕРЕЖІ :</h5>
                     <a href="#" class="d-inline-block mb-3">
                         <span class="badge bg-light text-dark fs-6 p-2">
                             <i class="bi bi-facebook me-1"></i> <?php echo $contact_r['contact_facebook'] ?>
@@ -116,7 +116,9 @@ if ($result && isset($result['site_shutdown']) && $result['site_shutdown'] == 1)
                             <label class="form-label" style="font-weight: 500;">ВАШЕ ПОВІДОМЛЕННЯ :</label>
                             <textarea name="message" required class="form-control shadow-none" rows="21" style="resize: none;"></textarea>
                         </div>
-                        <button type="submit" name="send" class="btn text-white custom-bg mt-3">НАДІСЛАТИ</button>
+                        <div class="d-flex justify-content-center">
+                            <button type="submit" name="send" class="btn text-white custom-bg mt-3">НАДІСЛАТИ</button>
+                        </div>
                     </form>
                 </div>
             </div>

@@ -39,7 +39,7 @@ if ($result && isset($result['site_shutdown']) && $result['site_shutdown'] == 1)
 
 <body class="bg-light"> <?php require 'include/header.php'; ?>
 
-    <div style="text-align: center; font-size: 24px; font-weight: bold; margin: 0 20px;"><img width="64" height="54" src="images/online-tour-pictures/online-tour-picture-ico.gif">СПИСОК ВІРТУАЛЬНИХ ТУРІВ<img width="64" height="54" src="images/online-tour-pictures/online-tour-picture-ico.gif"></div>
+    <div style="text-align: center; font-size: 24px; font-weight: bold; margin: 0 20px;"><img width="64" height="54" src="images/online-tour-pictures/online-tour-picture-ico.gif">ВІРТУАЛЬНІ ТУРИ<img width="64" height="54" src="images/online-tour-pictures/online-tour-picture-ico.gif"></div>
 
     <p style="text-align: center; font-size: 16px; margin: 0 20px;">ВСІ ПРАВА НА ВІРТУАЛЬНІ ТУРИ НАЛЕЖАТЬ - © KYIV DIGITAL, 2024</p><br>
 

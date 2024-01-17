@@ -28,8 +28,8 @@ if (isset($_POST['get_carousel'])) {
             <div class="card text-white border-0">
                 <img src="$path$row[carousel_image]" class="card-img">
                 <div class="card-img-overlay">
-                    <div class="d-flex justify-content-center mt-4">
-                        <button type="button" onclick="rem_image($row[settings_id])" class="btn btn-danger btn-sm shadow-none mt-2"> ВИДАЛИТИ ДАНЕ ФОТО <i class="bi bi-trash"></i> </button>
+                    <div class="d-flex justify-content-center mt-1">
+                        <button type="button" onclick="rem_image($row[settings_id])" class="btn btn-danger btn-sm shadow-none mt-2"> <i class="bi bi-trash"></i> </button>
                     </div>
                 </div>
             </div>
