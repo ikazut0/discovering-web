@@ -154,7 +154,7 @@ function add_image() {
 
     xhr.onload = function () {
         var myModal = document.getElementById('carousel-s');
-        var modal = new bootstrap.Modal(document.getElementById('myModal'));
+        var modal = bootstrap.Modal.getInstance(myModal);
         modal.hide();
 
         if (this.responseText == 'inv_img') {
