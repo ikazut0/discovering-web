@@ -1,9 +1,4 @@
-<?php
-
-require('../include/db_config.php');
-require('../include/essentials.php');
-
-adminLoginCheck();
+<?php require('../include/db_config.php'); require('../include/essentials.php'); adminLoginCheck();
 
 if (isset($_POST['add_tour'])) {
     $frm_data = filtrationData($_POST);
@@ -45,17 +40,17 @@ if (isset($_POST['get_tour'])) {
 
     while ($row = mysqli_fetch_assoc($res)) {
         if ($row['tour_status'] == 1) {
-            $tour_status = "<button onclick='change_status($row[tour_id], 0)' class='btn btn-success btn-sm shadow-none'>ON</button>";
+            $tour_status = "<button onclick='change_status($row[tour_id], 0)' class='btn btn-success btn-sm shadow-none'>ВКЛ.</button>";
         } else {
-            $tour_status = "<button onclick='change_status($row[tour_id], 1)' class='btn btn-danger btn-sm shadow-none'>OFF</button>";
+            $tour_status = "<button onclick='change_status($row[tour_id], 1)' class='btn btn-danger btn-sm shadow-none'>ВИКЛ.</button>";
         }
 
         $data .= "
         <tr class='align-middle'>
-         <td class='text-center'>$i</td>
-         <td class='text-center'>$row[tour_name]</td>
-         <td class='text-center'>$row[tour_area] sq. ft.</td>
-         <td class='text-center'>
+         <td class='text-center' style='font-size: 13px;'>$i</td>
+         <td class='text-center' style='font-size: 13px;'>$row[tour_name]</td>
+         <td class='text-center' style='font-size: 13px;'>$row[tour_area] sq. ft.</td>
+         <td class='text-center' style='font-size: 13px;'>
             <div class='badge-container'>
                 <span class='badge rounded-pill bg-light text-dark'>
                     Adult: $row[tour_adult]
@@ -65,20 +60,14 @@ if (isset($_POST['get_tour'])) {
                 </span>
             </div>
          </td>
-         <td class='text-center'>$row[tour_price]₴</td>
-         <td class='text-center'>$row[tour_quantity]</td>
-         <td class='text-center'>$tour_status</td>
+         <td class='text-center' style='font-size: 13px;'>$row[tour_price]₴</td>
+         <td class='text-center' style='font-size: 13px;'>$row[tour_quantity]</td>
+         <td class='text-center' style='font-size: 13px;'>$tour_status</td>
          <td class='text-center'>
-         <div class='text-end'>
-         <button type='button' onclick='edit_tour($row[tour_id])' class='btn btn-primary shadow-none btn-sm' data-bs-toggle='modal' data-bs-target='#edit_tour'>
-         <i class='bi bi-pencil-square'></i> РЕДАГУВАТИ ДАНИЙ ТУР?
-         </button>
-         <button type='button' onclick=\"tour_images($row[tour_id], '$row[tour_name]')\" class='btn btn-info shadow-none btn-sm' data-bs-toggle='modal' data-bs-target='#tour_image'>
-         <i class='bi bi-images'></i>
-         </button>
-         <button type='button' onclick='remove_tour($row[tour_id])' class='btn btn-danger shadow-none btn-sm'>
-         <i class='bi bi-trash'></i>
-         </button>
+         <div class='d-flex justify-content-end'>
+         <button type='button' onclick='edit_tour($row[tour_id])' class='btn btn-primary shadow-none btn-sm' data-bs-toggle='modal' data-bs-target='#edit_tour'> <i class='bi bi-pencil-square'></i> </button>
+         <button type='button' onclick=\"tour_images($row[tour_id], '$row[tour_name]')\" class='btn btn-info shadow-none btn-sm ms-2' data-bs-toggle='modal' data-bs-target='#tour_image'> <i class='bi bi-images'></i> </button>
+         <button type='button' onclick='remove_tour($row[tour_id])' class='btn btn-danger shadow-none btn-sm ms-2'> <i class='bi bi-trash'></i> </button>
          </div>
          </td>
          </tr>

@@ -15,16 +15,16 @@ xhr.open("POST", "ajax/facilities.php", true);
 
 xhr.onload = function () {
 if (this.responseText == 1) {
-    alert('success', 'ЗМІНИ ЗБЕРЕЖЕНО! ФОТО УСПІШНО ЗАВАНТАЖЕНЕ!');
+    alert('success', 'КЛЮЧОВА ОЗНАКА УСПІШНО ДОДАНА ДО КАТАЛОГУ!');
     feature_s_form.elements['feature_name'].value = '';
     get_features();
-    $('#feature-s').modal('hide'); // Close the modal after successful data addition
+    $('#feature-s').modal('hide');
 } 
 else if(this.responseText == 'room_added') {
-    alert('error', 'ЗМІНИ TEST! ФОТО TEST ЗАВАНТАЖЕНЕ!');   
+    alert('error', '');   
 }
 else {
-    alert('error', 'ЗМІНИ TEST! ФОТО TEST ЗАВАНТАЖЕНЕ!');
+    alert('error', '');
 }
 };
 
@@ -50,10 +50,10 @@ xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 
 xhr.onload = function () {
 if (this.responseText == 1) {
-    alert('success', 'ЗМІНИ ЗБЕРЕЖЕНО! ФОТО УСПІШНО ВИДАЛЕНЕ!');
+    alert('success', 'КЛЮЧОВА ОЗНАКА УСПІШНО ВИДАЛЕНА!');
     get_features();
 } else {
-    alert('error', 'ПОМИЛКА ВИДАЛЕННЯ ЗОБРАЖЕННЯ. СЕРВЕР НЕ ВІДПОВІДАЄ!');
+    alert('error', 'ПОМИЛКА ВИДАЛЕННЯ КЛЮЧОВОЇ ОЗНАКИ! СЕРВЕР НЕ НАДАВ ВІДПОВІДЬ!');
 }
 }
 xhr.send('rem_feature=' + val);

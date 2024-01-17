@@ -31,14 +31,14 @@ function add_tours() {
 
     xhr.onload = function () {
         if (this.responseText == 1) {
-            alert('success', 'ЗМІНИ ЗБЕРЕЖЕНО! ФОТО УСПІШНО ЗАВАНТАЖЕНЕ!');
+            alert('success', 'УСПІХ! ДАНИЙ ТУР УСПІШНО ДОДАНО ДО КАТАЛОГУ!');
             add_tour_form.reset();
             get_tours();
             $('#add_tour').modal('hide');
         } else if (this.responseText == 'tour_added') {
-            alert('error', 'ЗМІНИ TEST! ФОТО TEST ЗАВАНТАЖЕНЕ!');
+            alert('error', '');
         } else {
-            alert('error', 'ЗМІНИ TEST! ФОТО TEST ЗАВАНТАЖЕНЕ!');
+            alert('error', '');
         }
     };
     xhr.send(data);
@@ -115,14 +115,14 @@ function submit_edit_tour() {
 
     xhr.onload = function () {
         if (this.responseText == 1) {
-            alert('success', 'ЗМІНИ ЗБЕРЕЖЕНО! ФОТО УСПІШНО ЗАВАНТАЖЕНЕ!');
+            alert('success', 'УСПІХ! ДАНИЙ ТУР УСПІШНО ОНОВЛЕНО В КАТАЛОЗІ!');
             edit_tour_form.reset();
             get_tours();
             $('#edit_tour').modal('hide');
         } else if (this.responseText == 'tour_added') {
-            alert('error', 'ЗМІНИ TEST! ФОТО TEST ЗАВАНТАЖЕНЕ!');
+            alert('error', '');
         } else {
-            alert('error', 'ЗМІНИ TEST! ФОТО TEST ЗАВАНТАЖЕНЕ!');
+            alert('error', 'ПОМИЛКА! МОЖЛИВО ТУР БУВ ДОДАНО УСПІШНО, АЛЕ НЕ БУЛО ОБРАНО КЛЮЧОВІ ОЗНАКИ! РЕДАГУВАННЯ НЕ МОЖЛИВЕ!');
         }
     };
     xhr.send(data);
@@ -135,10 +135,10 @@ function change_status(tour_id, val) {
 
     xhr.onload = function () {
         if (this.responseText == 1) {
-            alert('success', 'ЗМІНИ TEST! ФОТО TEST ЗАВАНТАЖЕНЕ!');
+            alert('success', 'НА РАЗІ ТУР ОТРИМАВ СТАТУС ВІДОБРАЖЕННЯ : ' + (val == 1 ? '🟢 ВКЛ.' : '🔴 ВИКЛ.'));
             get_tours();
         } else {
-            alert('error', 'ЗМІНИ TEST! ФОТО TEST ЗАВАНТАЖЕНЕ!');
+            alert('error', 'ПОМИЛКА ПІД ЧАС ПРОЦЕСУ ЗМІНИ СТАТУСУ РОБОТИ САЙТУ!');
         }
     }
 
@@ -163,13 +163,13 @@ function add_image() {
     
     xhr.onload = function () {  
         if (this.responseText == 'inv_img') {
-            alert('error', 'ДОЗВОЛЯЮТЬСЯ ЗОБРАЖЕННЯ ФОРМАТУ : JPG та PNG!');
+            alert('error', 'ПОМИЛКА! ДОЗВОЛЯЄТЬСЯ ДОДАВАТИ ЗОБРАЖЕННЯ ФОРМАТУ JPG, АБО PNG!');
         } else if (this.responseText == 'inv_size') {
-            alert('error', 'РОЗМІР ЗОБРАЖЕННЯ МАЄ БУТИ МЕНШЕ НІЖ 10 МБ!');
+            alert('error', 'ПОМИЛКА! РОЗМІР ДОДАВАНОГО ЗОБРАЖЕННЯ МАЄ БУТИ МЕНШЕ НІЖ 10 МБ!');
         } else if (this.responseText == 'upd_failed') {
-            alert('error', 'ПОМИЛКА ЗАВАНТАЖЕННЯ ЗОБРАЖЕННЯ. СЕРВЕР НЕ ВІДПОВІДАЄ!');
+            alert('error', 'ПОМИЛКА! ВІДБУЛАСЯ ПОМИЛКА ПРИ ДОДАВАННІ ЗОБРАЖЕННЯ. СЕРВЕР НЕ НАДАВ ВІДПОВІДЬ!');
         } else {
-            alert('success', 'ЗМІНИ ЗБЕРЕЖЕНО! ФОТО УСПІШНО ЗАВАНТАЖЕНЕ!', 'image-alert');
+            alert('success', 'ЗМІНИ ДО ДАНИХ УСПІШНО ВИКОНАНІ! ФОТО ЗАВАНТАЖЕНО!', 'image-alert');
             tour_images(add_image_form.elements['tour_id'].value, document.querySelector("#tour_image .modal-title").innerText);
             add_image_form.reset();
         }
@@ -204,10 +204,10 @@ function rem_image(img_id, tour_id) {
 
     xhr.onload = function() {
         if(this.responseText == 1) {
-            alert('success', 'Image Removed!', 'image-alert');
+            alert('success', 'УСПІХ! ФОТО ДО ДАНОГО ТУРУ УСПІШНО ВИДАЛЕНО!', 'image-alert');
             tour_images(tour_id, document.querySelector("#tour_image .modal-title").innerText);
         } else {
-            alert('error', 'Image removal failed!', 'image-alert');
+            alert('error', 'ПОМИЛКА! ВІДБУЛАСЯ ПОМИЛКА ПРИ ВИДАЛЕННІ ЗОБРАЖЕННЯ. СЕРВЕР НЕ НАДАВ ВІДПОВІДЬ!', 'image-alert');
         }
     }
     xhr.send(data);
@@ -224,17 +224,17 @@ function thumb_image(img_id, tour_id) {
 
     xhr.onload = function() {
         if(this.responseText == 1) {
-            alert('success', 'Image Removed!', 'image-alert');
+            alert('success', 'УСПІХ! ФОТО ДО ДАНОГО ТУРУ УСПІШНО ОБРАНО ДЛЯ ВІДОБРАЖЕННЯ!', 'image-alert');
             tour_images(tour_id, document.querySelector("#tour_image .modal-title").innerText);
         } else {
-            alert('error', 'Image removal failed!', 'image-alert');
+            alert('error', 'ПОМИЛКА! ВІДБУЛАСЯ ПОМИЛКА ПРИ ОБИРАННІ ЗОБРАЖЕННЯ. СЕРВЕР НЕ НАДАВ ВІДПОВІДЬ!', 'image-alert');
         }
     }
     xhr.send(data);
 }
 
 function remove_tour(tour_id) {
-    if(confirm("Are you sure, you want to delete this tour?")) {
+    if(confirm("УВАГА! ВИ ВПЕВНЕНІ ЩО ВИ ХОЧЕТЕ ВИДАЛИТИ ДАНИЙ ТУР?")) {
         let data = new FormData();
         data.append('tour_id', tour_id);
         data.append('remove_tour', '');
@@ -244,10 +244,10 @@ function remove_tour(tour_id) {
 
     xhr.onload = function() {
         if(this.responseText == 1) {
-            alert('success', 'Image Removed!');
+            alert('success', 'УСПІХ! ДАНИЙ ТУР УСПІШНО ВИДАЛЕНО З КАТАЛОГУ!');
             get_tours();
         } else {
-            alert('error', 'Image removal failed!');
+            alert('error', 'ПОМИЛКА! ВІДБУЛАСЯ ПОМИЛКА ПРИ ВИДАЛЕННІ ДАНОГО ТУРУ С КАТАЛОГУ. СЕРВЕР НЕ НАДАВ ВІДПОВІДЬ!');
         }
     }
     xhr.send(data);

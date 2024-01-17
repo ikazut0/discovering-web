@@ -3,7 +3,7 @@
 <?php
 session_start();
 if ((isset($_SESSION['adminLoginCheck']) && $_SESSION['adminLoginCheck'] == true)) {
-    adminHome('dashboard.php');
+    adminHome('settings.php');
 }
 ?>
 
@@ -16,23 +16,9 @@ if ((isset($_SESSION['adminLoginCheck']) && $_SESSION['adminLoginCheck'] == true
     <link rel="stylesheet" href="/css/style.css">
     <title>aPanel - АВТОРИЗАЦІЯ</title>
     <?php require('include/links.php'); ?>
-    <style>
-        div.login-form {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 400px;
-        }
-
-        .alert-center-top {
-            position: fixed;
-            top: 10%;
-            left: 50%;
-            transform: translateX(-50%);
-        }
-    </style>
+    <style>div.login-form{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:400px;}.alert-center-top{position:fixed;top:10%;left:50%;transform:translateX(-50%);}</style>
 </head>
+
 <body class="bg-light">
     <div class="login-form text-center rounded bg-white shadow overflow-hidden">
         <form method="POST">
@@ -87,5 +73,4 @@ if ((isset($_SESSION['adminLoginCheck']) && $_SESSION['adminLoginCheck'] == true
 
     <script src="scripts/greeting-admin.js"></script>
 
-</body>
-</html>
+</body> </html>

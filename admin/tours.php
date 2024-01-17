@@ -4,117 +4,85 @@
 <html lang="UA">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-
-    <title>⚙️ aPanel - СПИСОК ТУРІВ 🚞</title>
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>⚙️ НАЛАШТУВАННЯ</title>
     <?php require "include/links.php";?>
-
-    <style>
-        body {
-            background-color: #f8f9fa;
-        }
-
-        #dashboard-menu {
-            position: fixed;
-            height: 100%;
-            z-index: 11;
-        }
-
-        @media screen and (max-width: 991px) {
-            #dashboard-menu {
-                height: auto;
-                width: 100%;
-            }
-
-            #main-content {
-                margin-top: 60px;
-            }
-        }
-
-        .card {
-            border-radius: 15px;
-        }
-
-        .btn-custom {
-            border-radius: 10px;
-        }
-
-        .modal-content {
-            border-radius: 15px;
-        }
-    </style>
+    <style>body{background-color:#f8f9fa;margin:0;padding:0}#dashboard-menu{position:fixed;height:100%;z-index:11} @media screen and (max-width:991px){#dashboard-menu{height:auto;width:100%}#main-content{margin-top:60px}}.card{border-radius:15px}.btn-custom{border-radius:10px}.modal-content{border-radius:15px}</style>
 </head>
 
 <body class="bg-light"> <?php require "include/header.php";?>
     <div class="container-fluid" id="main-content">
         <div class="row">
             <div class="col-lg-10 ms-auto p-4 overflow-hidden">
-                <h3 class="mb-4">🚞 DISCOVERING.UA - СПИСОК ДОСТУПНИХ ТУРІВ ДЛЯ КІНЦЕВИХ КОРИСТУВАЧІВ</h3>
-
+                <h3 class="mb-4" style="font-size: 13px;">🚞 DISCOVERING.UA - КАТАЛОГ ДОСТУПНИХ ТУРІВ : </h3>
+                
                 <div class="card border-0 shadow-sm mb-4">
                     <div class="card-body">
                         <div class="text-end mb-4">
-                            <button type="button" class="btn btn-dark shadow-none btn-sm" data-bs-toggle="modal" data-bs-target="#add_tour">
-                                <i class="bi bi-plus-square"></i> ДОДАТИ ТУР ДО КАТАЛОГУ? | ADD A TOUR TO THE CATALOG?
-                            </button>
+                            <button type="button" class="btn btn-dark shadow-none btn-sm" data-bs-toggle="modal" data-bs-target="#add_tour"><i class="bi bi-plus-square"></i></button>
                         </div>
-
+                        
                         <div class="table-responsive-lg" style="max-height: 450px; overflow-y: scroll;">
-                         <table class="table table-hover table-striped text-center">
+                        <table class="table table-hover table-striped text-center">
                             <thead class="bg-dark text-light">
-                                <tr>
-                                    <th scope="col" class="text-center">№</th>
-                                    <th scope="col" class="text-center">НАЗВА ТУРУ</th>
-                                    <th scope="col" class="text-center">ЕКСКУРСОВОДІВ</th>
-                                    <th scope="col" class="text-center">ЛЮДЕЙ</th>
-                                    <th scope="col" class="text-center">ЦІНА</th>
-                                    <th scope="col" class="text-center">БІЛЕТІВ</th>
-                                    <th scope="col" class="text-center">СТАТУС ТУРУ</th>
-                                    <th scope="col" class="text-center">ОПЕРАЦІЇ: READ | UPDATE | DELETE </th>
+                                 <tr>
+                                    <th scope="col" style="font-size: 13px;" class="text-center">#</th>
+                                    <th scope="col" style="font-size: 13px;" class="text-center">НАЗВА : </th>
+                                    <th scope="col" style="font-size: 13px;" class="text-center">ЕКСКУРСОВОДІВ :</th>
+                                    <th scope="col" style="font-size: 13px;" class="text-center">ЛЮДЕЙ : </th>
+                                    <th scope="col" style="font-size: 13px;" class="text-center">ЦІНА : </th>
+                                    <th scope="col" style="font-size: 13px;" class="text-center">БІЛЕТІВ : </th>
+                                    <th scope="col" style="font-size: 13px;" class="text-center">СТАТУС : </th>
+                                    <th scope="col" style="font-size: 13px;" class="text-center">ОПЕРАЦІЇ : </th>
                                 </tr>
                             </thead>
-                            <tbody id="tour-data"></tbody>
+                            <tbody id="tour-data"> </tbody>
                         </table>
                     </div>
+                    
+                    <div class="modal fade" id="add_tour" data-bs-backdrop="static" data-bs-keyboard="true" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-lg">
+                            <form id="add_tour_form" autocomplete="off">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" style="font-size: 13px;">ПРОЦЕС ДОДАВАННЯ ТУРУ ДО КАТАЛОГУ : </h5>
+                                    </div>
+                                    
+                                    <div class="modal-body">
+                                        <div class="row">
+                                            <div class="col-md-6 mb-3">
+                                                <label class="form-label fw-bold" style="font-size: 13px;">🧐 ВВЕДІТЬ, БУДЬ ЛАСКА НАЗВУ ТУРА : </label>
+                                                <input type="text" name="tour_name" class="form-control shadow-none">
+                                            </div>
+                                            
+                                            <div class="col-md-6 mb-3">
+                                                <label class="form-label fw-bold" style="font-size: 13px;">🏂🏻 ВВЕДІТЬ, БУДЬ ЛАСКА КІЛЬКІСТЬ ЕКСКУРСОВОДІВ : </label>
+                                                <input type="number" min="1" name="tour_area" class="form-control shadow-none">
+                                            </div>
 
-                        <div class="modal fade" id="add_tour" data-bs-backdrop="static" data-bs-keyboard="true" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                            <div class="modal-dialog modal-lg">
-                                <form id="add_tour_form" autocomplete="off">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title">ДОДАТИ ТУР ДО КАТАЛОГУ? | ADD A TOUR TO THE CATALOG? :</h5>
-                                        </div>
-                                        <div class="modal-body">
-                                            <div class="row">
-                                                <div class="col-md-6 mb-3">
-                                                    <label class="form-label fw-bold">НАЗВА ТУРУ | TOUR NAME :</label>
-                                                    <input type="text" name="tour_name" class="form-control shadow-none">
-                                                </div>
-                                                <div class="col-md-6 mb-3">
-                                                    <label class="form-label fw-bold">ЕКСКУРСОВОДІВ | NUMBER OF TOUR GUIDES :</label>
-                                                    <input type="number" min="1" name="tour_area" class="form-control shadow-none">
-                                                </div>
-                                                <div class="col-md-6 mb-3">
-                                                    <label class="form-label fw-bold">ЦІНА | PRICE TOUR :</label>
-                                                    <input type="text" min="1" name="tour_price" class="form-control shadow-none">
-                                                </div>
-                                                <div class="col-md-6 mb-3">
-                                                    <label class="form-label fw-bold">БІЛЕТІВ | NUMBER OF TICKETS :</label>
-                                                    <input type="text" min="1" name="tour_quantity" class="form-control shadow-none">
-                                                </div>
-                                                <div class="col-md-6 mb-3">
-                                                    <label class="form-label fw-bold">ДОРОСЛИХ | NUMBER OF ADULTS :</label>
-                                                    <input type="text" min="1" name="tour_adult" class="form-control shadow-none">
-                                                </div>
-                                                <div class="col-md-6 mb-3">
-                                                    <label class="form-label fw-bold">ДІТЕЙ | NUMBER OF CHILDREN :</label>
-                                                    <input type="text" min="1" name="tour_children" class="form-control shadow-none">
-                                                </div>
-                                                <div class="col-12 mb-3">
-                                                    <label class="form-label fw-bold">КЛЮЧОВІ ПАРАМЕТРИ ТУРУ | KEY PARAMETERS OF THE TOUR :</label>
-                                                    <div class="row">
+                                            <div class="col-md-6 mb-3">
+                                                <label class="form-label fw-bold" style="font-size: 13px;">💰 ВВЕДІТЬ, БУДЬ ЛАСКА ЦІНУ ДЛЯ ДАНОГО ТУРА : </label>
+                                                <input type="text" min="1" name="tour_price" class="form-control shadow-none">
+                                            </div>
+                                            
+                                            <div class="col-md-6 mb-3">
+                                                <label class="form-label fw-bold" style="font-size: 13px;">🎫 ВВЕДІТЬ, БУДЬ ЛАСКА КІЛЬКІСТЬ БІЛЕТІВ : </label>
+                                                <input type="text" min="1" name="tour_quantity" class="form-control shadow-none">
+                                            </div>
+                                            
+                                            <div class="col-md-6 mb-3">
+                                                <label class="form-label fw-bold" style="font-size: 13px;">👨🏻 ВВЕДІТЬ, БУДЬ ЛАСКА КІЛЬКІСТЬ ДОРОСЛИХ : </label>
+                                                <input type="text" min="1" name="tour_adult" class="form-control shadow-none">
+                                            </div>
+
+                                            <div class="col-md-6 mb-3">
+                                                <label class="form-label fw-bold" style="font-size: 13px;">🧒 ВВЕДІТЬ, БУДЬ ЛАСКА КІЛЬКІСТЬ ДІТЕЙ : </label>
+                                                <input type="text" min="1" name="tour_children" class="form-control shadow-none">
+                                            </div>
+                                            
+                                            <div class="col-12 mb-3">
+                                                <label class="form-label fw-bold" style="font-size: 13px;">🔎 ОБЕРІТЬ, БУДЬ ЛАСКА КЛЮЧОВІ ОЗНАКИ : </label>
+                                                <div class="row">
                                                         <?php
                                                         $res = selectAll(
                                                             "admin_feature"
@@ -134,14 +102,16 @@
                                                             ";
                                                         }
                                                         ?>
+                                                        </div>
                                                     </div>
-                                                </div>
+
                                                 <div class="col-12 mb-3">
-                                                    <label class="form-label fw-bold">ОПИС ТУРУ | DESCRIPTION OF THE TOUR :</label>
+                                                    <label class="form-label fw-bold" style="font-size: 13px;">✏️ НАПИШІТЬ, БУДЬ ЛАСКА ОПИС ДЛЯ ДАНОГО ТУРА : </label>
                                                     <textarea name="tour_desc" rows="4" class="form-control shadow-none"></textarea>
                                                 </div>
                                             </div>
                                         </div>
+                                        
                                         <div class="modal-footer">
                                             <button type="reset" class="btn text-secondary shadow-none" data-bs-dismiss="modal">ЗАКРИТИ</button>
                                             <button type="submit" class="btn custom-bg text-white shadow-none">ЗБЕРЕГТИ</button>
@@ -150,42 +120,49 @@
                                 </form>
                             </div>
                         </div>
-
+                        
                         <div class="modal fade" id="edit_tour" data-bs-backdrop="static" data-bs-keyboard="true" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                             <div class="modal-dialog modal-lg">
                                 <form id="edit_tour_form" autocomplete="off">
                                     <div class="modal-content">
                                         <div class="modal-header">
-                                            <h5 class="modal-title">РЕДАГУВАТИ ТУР | EDIT TOUR :</h5>
+                                            <h5 class="modal-title" style="font-size: 13px;">ОНОВЛЕННЯ ІНФОРМАЦІЇ ПРО ДАНИЙ ТУР : </h5>
                                         </div>
+                                        
                                         <div class="modal-body">
                                             <div class="row">
                                                 <div class="col-md-6 mb-3">
-                                                    <label class="form-label fw-bold">НАЗВА ТУРУ | TOUR NAME :</label>
+                                                    <label class="form-label fw-bold" style="font-size: 13px;">🧐 ВВЕДІТЬ, БУДЬ ЛАСКА НАЗВУ ТУРА :  </label>
                                                     <input type="text" name="tour_name" class="form-control shadow-none">
                                                 </div>
+                                                
                                                 <div class="col-md-6 mb-3">
-                                                    <label class="form-label fw-bold">ЕКСКУРСОВОДІВ | NUMBER OF TOUR GUIDES :</label>
+                                                    <label class="form-label fw-bold" style="font-size: 13px;">🏂🏻 ВВЕДІТЬ, БУДЬ ЛАСКА КІЛЬКІСТЬ ЕКСКУРСОВОДІВ : </label>
                                                     <input type="number" min="1" name="tour_area" class="form-control shadow-none">
                                                 </div>
+
                                                 <div class="col-md-6 mb-3">
-                                                    <label class="form-label fw-bold">ЦІНА | PRICE TOUR :</label>
+                                                    <label class="form-label fw-bold" style="font-size: 13px;">💰 ВВЕДІТЬ, БУДЬ ЛАСКА ЦІНУ ДЛЯ ДАНОГО ТУРА : </label>
                                                     <input type="text" min="1" name="tour_price" class="form-control shadow-none">
                                                 </div>
+                                                
                                                 <div class="col-md-6 mb-3">
-                                                    <label class="form-label fw-bold">БІЛЕТІВ | NUMBER OF TICKETS :</label>
+                                                    <label class="form-label fw-bold" style="font-size: 13px;">🎫 ВВЕДІТЬ, БУДЬ ЛАСКА КІЛЬКІСТЬ БІЛЕТІВ : </label>
                                                     <input type="text" min="1" name="tour_quantity" class="form-control shadow-none">
                                                 </div>
+                                                
                                                 <div class="col-md-6 mb-3">
-                                                    <label class="form-label fw-bold">ДОРОСЛИХ | NUMBER OF ADULTS :</label>
+                                                    <label class="form-label fw-bold" style="font-size: 13px;">👨🏻 ВВЕДІТЬ, БУДЬ ЛАСКА КІЛЬКІСТЬ ДОРОСЛИХ : </label>
                                                     <input type="text" min="1" name="tour_adult" class="form-control shadow-none">
                                                 </div>
+                                                
                                                 <div class="col-md-6 mb-3">
-                                                    <label class="form-label fw-bold">ДІТЕЙ | NUMBER OF CHILDREN :</label>
+                                                    <label class="form-label fw-bold" style="font-size: 13px;">🧒 ВВЕДІТЬ, БУДЬ ЛАСКА КІЛЬКІСТЬ ДІТЕЙ : </label>
                                                     <input type="text" min="1" name="tour_children" class="form-control shadow-none">
                                                 </div>
+                                                
                                                 <div class="col-12 mb-3">
-                                                    <label class="form-label fw-bold">КЛЮЧОВІ ПАРАМЕТРИ ТУРУ | KEY PARAMETERS OF THE TOUR :</label>
+                                                    <label class="form-label fw-bold" style="font-size: 13px;">🔎 ОБЕРІТЬ, БУДЬ ЛАСКА КЛЮЧОВІ ОЗНАКИ : </label>
                                                     <div class="row">
                                                         <?php
                                                         $res = selectAll(
@@ -209,7 +186,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="col-12 mb-3">
-                                                    <label class="form-label fw-bold">ОПИС ТУРУ | DESCRIPTION OF THE TOUR :</label>
+                                                    <label class="form-label fw-bold" style="font-size: 13px;">✏️ НАПИШІТЬ, БУДЬ ЛАСКА ОПИС ДЛЯ ДАНОГО ТУРА : </label>
                                                     <textarea name="tour_desc" rows="4" class="form-control shadow-none"></textarea>
                                                 </div>
                                                 <input type="hidden" name="tour_id">
@@ -223,38 +200,39 @@
                                 </form>
                             </div>
                         </div>
-
+                        
                         <div class="modal fade" id="tour_image" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                             <div class="modal-dialog modal-lg">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h5 class="modal-title">test:</h5>
+                                        <h5 class="modal-title">🍃⛅️🏞️ : </h5>
                                         <button type="button" class="btn-close shadow-none" data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
-
+                                    
                                     <div class="modal-body">
                                         <div id="image-alert"></div>
                                         <div class="border-bottom border-3 pb-3 mb-3">
                                             <form id="add_image_form">
-                                                <label class="form-label fw-bold">ВИБЕРІТЬ, ФОТО ЯКЕ БУДЕ ВІДОБРАЖАТИСЯ | CHOOSE A PHOTO TO BE DISPLAYED :</label>
+                                                <label class="form-label fw-bold" style="font-size: 13px;">ВИБЕРІТЬ, БУДЬ ЛАСКА ФОТО ДЛЯ ВІДОБРАЖЕННЯ : </label>
                                                 <input type="file" name="image" class="form-control shadow-none mb-3" accept=".jpg, .png, .webp, .jpeg" required>
-                                                <button class="btn custom-bg text-white shadow-none">ADD</button>
+                                                <button class="btn custom-bg text-white shadow-none">⤵️ ЗАВАНТАЖИТИ</button>
                                                 <input type="hidden" name="tour_id">
                                             </form>
                                         </div>
-
+                                        
                                         <div class="table-responsive-md mx-auto text-center" style="max-height: 480px; overflow-y: scroll;">
-                                            <table class="table">
-                                                <thead class="sticky-top bg-dark text-light">
-                                                    <tr class="bg-dark text-light">
-                                                    <th scope="col" width="35%" style="white-space: nowrap; text-align: center;">КАРТИНКА</th>
-                                                     <th scope="col" style="white-space: nowrap; text-align: center;">ВІДОБРАЖАТИ КАРТИНКУ?</th>
-                                                     <th class="text-center" scope="col" style="white-space: nowrap;">ВИДАЛИТИ ФОТО?</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody id="tour-image-data"></tbody>
-                                            </table>
-                                        </div>
+                                        <table class="table">
+                                            <thead class="sticky-top bg-dark text-light">
+                                                <tr class="bg-dark text-light">
+                                                    <th scope="col" width="35%" style="white-space: nowrap; text-align: center;" style="font-size: 13px;">КАРТИНКА</th>
+                                                    <th scope="col" style="white-space: nowrap; text-align: center;" style="font-size: 13px;">ВІДОБРАЖАТИ КАРТИНКУ?</th>
+                                                    <th class="text-center" scope="col" style="white-space: nowrap;" style="font-size: 13px;">ВИДАЛИТИ ФОТО?</th>
+                                                </tr>
+                                            </thead>
+                                            
+                                            <tbody id="tour-image-data"> </tbody>
+                                        
+                                        </table>
                                     </div>
                                 </div>
                             </div>
@@ -264,7 +242,7 @@
             </div>
         </div>
     </div>
-
+    
     <?php require "include/scripts.php"; ?>
     
     <script src="scripts/feature-info.js"></script>
@@ -283,4 +261,6 @@
         } else { console.error('Bootstrap is not defined. Make sure you have included Bootstrap JS.'); }
         });
         
-    </script> </body> </html>
+    </script> 
+
+</body> </html>

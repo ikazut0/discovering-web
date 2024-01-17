@@ -1,9 +1,4 @@
-<?php
-
-require('../include/db_config.php');
-require('../include/essentials.php');
-
-adminLoginCheck();
+<?php require('../include/db_config.php'); require('../include/essentials.php'); adminLoginCheck();
 
 if (isset($_POST['get_general'])) {
     $q = "SELECT * FROM `admin_settings` WHERE `settings_id`=?";

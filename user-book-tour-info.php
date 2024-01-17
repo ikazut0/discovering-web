@@ -12,7 +12,8 @@ $bookedToursQuery = "SELECT t.*, b.booking_date, i.tour_image
                      JOIN user_booking_info b ON t.tour_id = b.tour_id 
                      JOIN user_info u ON b.user_id = u.user_id 
                      JOIN admin_tour_images i ON t.tour_id = i.tour_id AND i.tour_thumb = 1 
-                     WHERE u.user_email = ?";
+                     WHERE u.user_email = ?
+                     ORDER BY b.booking_date DESC";
 
 $bookedToursValues = [$userEmail];
 $bookedToursResult = selectData($bookedToursQuery, $bookedToursValues, 's');

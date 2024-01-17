@@ -6,7 +6,7 @@
     element.innerHTML = `
     <div class="alert ${bs_class} alert-custom alert-dismissible fade show text-center position-fixed top-50 start-50 translate-middle" role="alert">
       <strong>${msg}</strong>
-      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
     </div>
     `;
     document.body.append(element);

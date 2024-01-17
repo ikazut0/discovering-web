@@ -85,7 +85,7 @@ input[type="number"] {
 
 .alert-center-top {
     position: fixed;
-    top: 50px; /* Adjust this value to set the margin from the top */
+    top: 50px;
     left: 50%;
     transform: translateX(-50%);
 }

@@ -88,7 +88,8 @@ if ($result && isset($result['site_shutdown']) && $result['site_shutdown'] == 1)
         </div>
     </div>
 
-    <?php require('include/scripts-library.php'); ?>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
     <script>
         document.addEventListener("DOMContentLoaded", function () {

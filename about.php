@@ -1,4 +1,4 @@
-<?php require('admin/include/db_config.php'); require('admin/include/essentials.php'); 
+<?php require('admin/include/db_config.php'); require('admin/include/essentials.php'); session_start();
 
 $query = "SELECT `site_shutdown` FROM `admin_settings` WHERE `settings_id`=?";
 $values = [1];
@@ -22,30 +22,27 @@ $mysqli->close();
 if ($result && isset($result['site_shutdown']) && $result['site_shutdown'] == 1) {
     echo '<div style="display: flex; justify-content: center; align-items: center; height: 100vh;">';
     echo '<img src="https://media.giphy.com/avatars/404academy/kGwR3uDrUKPI.gif" style="max-width: 100%; max-height: 100%;"/>';
-    echo '</div>'; exit;
+    echo '</div>';
+    exit;
 }
-
 ?>
 
 <!DOCTYPE HTML>
-<html lang="UA">
+<HTML lang="UA">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <?php require('include/links.php'); ?>
-    <title>DISCOVERING.UA - МАНДРУЙ УКРАЇНОЮ</title>
+    <link rel="shortcut icon" href="https://cdn.icon-icons.com/icons2/1928/PNG/512/iconfinder-compass-direction-maps-holiday-vacation-icon-4602027_122100.png" type="image/x-icon">
+    <title>DISCOVERING.UA</title>
 </head>
 
-<body class="bg-light">
-
-    <?php require('include/header.php'); ?>
-
+<body class="bg-light"> <?php require('include/header.php'); ?>
     <div class="my-5 px-4">
         <h2 class="fw-bold h-font text-center">ПРО НАС</h2>
         <hr class="mx-auto my-3" style="border: 1px solid #000; width: 85px;">
         <p class="text-center mt-3">
-            ДОПОМОГТИ ПОДОРОЖУЮЧИМ ВІДКРИВАТИ НАЙКРАЩЕ, ЩО ПРОПОНУЄ
-            <img width="64" height="54" src="https://cliply.co/wp-content/uploads/2022/03/392203010_UKRAINE_HEART_400.gif">
+            ДОПОМОГТИ ПОДОРОЖУЮЧИМ ВІДКРИВАТИ НАЙКРАЩЕ, ЩО ПРОПОНУЄ УКРАЇНА
         </p>
     </div>
 
@@ -100,4 +97,5 @@ if ($result && isset($result['site_shutdown']) && $result['site_shutdown'] == 1)
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
 </body> </html>

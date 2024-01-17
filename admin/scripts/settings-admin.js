@@ -44,10 +44,10 @@ function upd_general(site_title_val) {
         modal.hide();
 
         if (this.responseText == 1) {
-            alert('success', 'ЗМІНИ ЗБЕРЕЖЕНО!');
+            alert('success', 'ЗМІНИ ДО ДАНИХ УСПІШНО ВИКОНАНІ!');
             get_general();
         } else {
-            alert('error', 'ПОМИЛКА ПІД ЧАС ЗБЕРЕЖЕННЯ ДАНИХ!');
+            alert('error', 'ПОМИЛКА ПІД ЧАС ПРОЦЕСУ ЗБЕРЕЖЕННЯ ДАНИХ!');
         }
     };
 
@@ -62,10 +62,10 @@ function upd_shutdown(val) {
 
     xhr.onload = function () {
         if (this.responseText == 1) {
-            alert('success', 'НА РАЗІ САЙТ В РЕЖИМІ : ' + (val == 1 ? '🟢' : '🔴'));
+            alert('success', 'НА РАЗІ САЙТ ОТРИМАВ СТАТУС : ' + (val == 1 ? '🟢 ВКЛ.' : '🔴 ВИКЛ.'));
             get_general();
         } else {
-            alert('error', 'ПОМИЛКА ПІД ЧАС ЗБЕРЕЖЕННЯ ДАНИХ!');
+            alert('error', 'ПОМИЛКА ПІД ЧАС ПРОЦЕСУ ЗМІНИ СТАТУСУ РОБОТИ САЙТУ!');
         }
     };
 
@@ -129,10 +129,10 @@ function upd_contacts() {
         modal.hide();
 
         if (this.responseText == 1) {
-            alert('success', 'ЗМІНИ ЗБЕРЕЖЕНО!');
+            alert('success', 'ЗМІНИ ДО ДАНИХ УСПІШНО ВИКОНАНІ!');
             get_contacts();
         } else {
-            alert('error', 'ПОМИЛКА ПІД ЧАС ЗБЕРЕЖЕННЯ ДАНИХ!');
+            alert('error', 'ПОМИЛКА ПІД ЧАС ПРОЦЕСУ ЗБЕРЕЖЕННЯ ДАНИХ!');
         }
     };
 
@@ -158,13 +158,13 @@ function add_image() {
         modal.hide();
 
         if (this.responseText == 'inv_img') {
-            alert('error', 'ДОЗВОЛЯЮТЬСЯ ЗОБРАЖЕННЯ ФОРМАТУ : JPG та PNG!');
+            alert('error', 'ПОМИЛКА! ДОЗВОЛЯЄТЬСЯ ДОДАВАТИ ЗОБРАЖЕННЯ ФОРМАТУ JPG, АБО PNG!');
         } else if (this.responseText == 'inv_size') {
-            alert('error', 'РОЗМІР ЗОБРАЖЕННЯ МАЄ БУТИ МЕНШЕ НІЖ 10 МБ!');
+            alert('error', 'ПОМИЛКА! РОЗМІР ДОДАВАНОГО ЗОБРАЖЕННЯ МАЄ БУТИ МЕНШЕ НІЖ 10 МБ!');
         } else if (this.responseText == 'upd_failed') {
-            alert('error', 'ПОМИЛКА ЗАВАНТАЖЕННЯ ЗОБРАЖЕННЯ. СЕРВЕР НЕ ВІДПОВІДАЄ!');
+            alert('error', 'ПОМИЛКА! ВІДБУЛАСЯ ПОМИЛКА ПРИ ДОДАВАННІ ЗОБРАЖЕННЯ. СЕРВЕР НЕ НАДАВ ВІДПОВІДЬ!');
         } else {
-            alert('success', 'ЗМІНИ ЗБЕРЕЖЕНО! ФОТО УСПІШНО ЗАВАНТАЖЕНЕ!');
+            alert('success', 'ЗМІНИ ДО ДАНИХ УСПІШНО ВИКОНАНІ! ФОТО ЗАВАНТАЖЕНО!');
             carousel_picture_inp.value = '';
             get_carousel();
         }
@@ -190,10 +190,10 @@ function rem_image(val) {
 
     xhr.onload = function () {
         if (this.responseText == 1) {
-            alert('success', 'ЗМІНИ ЗБЕРЕЖЕНО! ФОТО УСПІШНО ВИДАЛЕНЕ!');
+            alert('success', 'ЗМІНИ ДО ДАНИХ УСПІШНО ВИКОНАНІ! ФОТО ВИДАЛЕНО!');
             get_carousel();
         } else {
-            alert('error', 'ПОМИЛКА ВИДАЛЕННЯ ЗОБРАЖЕННЯ. СЕРВЕР НЕ ВІДПОВІДАЄ!');
+            alert('error', 'ПОМИЛКА! ВІДБУЛАСЯ ПОМИЛКА ПРИ ВИДАЛЕННІ ЗОБРАЖЕННЯ. СЕРВЕР НЕ НАДАВ ВІДПОВІДЬ!');
         }
     }
     xhr.send('rem_image=' + val);

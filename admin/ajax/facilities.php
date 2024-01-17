@@ -1,9 +1,4 @@
-<?php
-
-require('../include/db_config.php');
-require('../include/essentials.php');
-
-adminLoginCheck();
+<?php require('../include/db_config.php'); require('../include/essentials.php'); adminLoginCheck();
 
 if (isset($_POST['add_feature'])) {
     $frm_data = filtrationData($_POST);
@@ -24,13 +19,11 @@ if (isset($_POST['get_features'])) {
         <tr class='align-middle'>
             <td>$i</td>
             <td>$row[feature_name]</td>
-            <td class="text-end">
-                <button type="button" onclick="rem_feature($row[feature_id])" class="btn btn-danger btn-sm shadow-none mt-2">
-                    <i class="bi bi-trash"></i> ВИДАЛИТИ ФОТО
-                </button>
+            <td class="text-end pe-4">
+                <button type="button" onclick="rem_feature($row[feature_id])" class="btn btn-danger btn-sm shadow-none mt-2"> <i class="bi bi-trash"></i> </button>
             </td>
         </tr>
-data;
+        data;
         $i++;
     }
 }
