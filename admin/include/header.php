@@ -2,7 +2,7 @@
 
 <div class="container-fluid bg-dark text-light p-2 d-flex align-items-center justify-content-between sticky-top">
     <h3 id="greeting-admin" class="bg-dark text-white py-2 m-0"></h3>
-    <a href="logout.php" class="btn btn-light btn-sm">ВИХІД 🏃</a>
+    <a href="logout.php" class="btn btn-light btn-sm" style="font-size: 12px;">ВИХІД</a>
 </div>
 
 <div class="col-lg-2 bg-dark border-top border-3 border-secondary" id="dashboard-menu">

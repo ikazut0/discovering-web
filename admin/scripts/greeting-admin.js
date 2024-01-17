@@ -11,4 +11,4 @@ if (currentTime >= 5 && currentTime < 12) {
     greeting = 'ДОБРОГО ВЕЧОРА';
 }
 
-greetingElement.textContent = '👋 aPanel - ' + greeting;
+greetingElement.textContent = '👋 ' + greeting;

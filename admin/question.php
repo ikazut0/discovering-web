@@ -54,7 +54,7 @@ if (isset($_GET['del'])) {
     <div class="container-fluid" id="main-content">
         <div class="row">
             <div class="col-lg-10 col-md-10 col-sm-12 ms-auto p-4 overflow-hidden">
-                <h3 class="mb-4" style="font-size: 13px;">❓ СПИСОК ЗАПИТАНЬ ВІД КОРИСТУВАЧІВ ПЛАТФОРМИ : </h3>
+                <h3 class="mb-4" style="font-size: 12px;">❓ СПИСОК ЗАПИТАНЬ ВІД КОРИСТУВАЧІВ ПЛАТФОРМИ : </h3>
                 
                 <div class="card border-0 shadow-sm mb-4">
                     <div class="card-body">
@@ -122,6 +122,9 @@ if (isset($_GET['del'])) {
                             }
                             });
                             </script>
+                            
+                            <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+                            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
                             
                             <?php require('include/scripts.php'); ?>
                             
