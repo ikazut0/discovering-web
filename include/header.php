@@ -71,25 +71,23 @@ $title_r = mysqli_fetch_assoc(selectData($title_q, $values, 'i'));
             <div class="modal-content">
                 <form method="post" action="login.php">
                     <div class="modal-header">
-                        <h5 class="modal-title d-flex align-items-center">
-                            <i class="bi bi-person-fill fs-3 me-2"></i> АВТОРИЗАЦІЯ В ОБЛІКОВИЙ ЗАПИС
-                        </h5>
+                        <h5 class="modal-title d-flex align-items-center" style="font-size: 12px;"><i class="bi bi-person-fill fs-3 me-2"></i> АВТОРИЗАЦІЯ В ОБЛІКОВИЙ ЗАПИС КОРИСТУВАЧА</h5>
                         <button type="reset" class="btn-close shadow-none" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
                         <div class="mb-3">
                             <i class="bi bi-envelope-at-fill"></i>
-                            <label class="form-label">ЕЛ.ПОШТА :</label>
+                            <label class="form-label" style="font-size: 12px;">ВВЕДІТЬ, БУДЬ ЛАСКА ВАШУ ЕЛ. ПОШТУ : </label>
                             <input name="login_email" type="email" class="form-control shadow-none">
                         </div>
                         <div class="mb-4">
                             <i class="bi bi-key-fill"></i>
-                            <label class="form-label">ПАРОЛЬ :</label>
+                            <label class="form-label" style="font-size: 12px;">ВВЕДІТЬ, БУДЬ ЛАСКА ВАШ ПАРОЛЬ : </label>
                             <input name="login_pass" type="password" class="form-control shadow-none">
                         </div>
                         <div class="d-flex align-items-center justify-content-between mb-2">
-                            <button type="submit" class="btn btn-dark shadow-none" name="loginBtn">АВТОРИЗАЦІЯ</button>
-                            <a href="change-password.php" class="btn btn-outline-dark shadow-none">ЗАБУЛИ ПАРОЛЬ?</a>
+                            <button type="submit" class="btn btn-dark shadow-none" name="loginBtn">👋 АВТОРИЗУВАТИСЯ </button>
+                            <a href="change-password.php" class="btn btn-outline-dark shadow-none">😭 ЗАБУЛИ ПАРОЛЬ? </a>
                         </div>
                     </div>
                 </form>
@@ -102,7 +100,7 @@ $title_r = mysqli_fetch_assoc(selectData($title_q, $values, 'i'));
         <div class="modal-content">
             <form id="register-form" method="post" action="register.php" enctype="multipart/form-data">
                 <div class="modal-header">
-                    <h5 class="modal-title d-flex align-items-center">
+                    <h5 class="modal-title d-flex align-items-center" style="font-size: 12px;">
                         <i class="bi bi-person-bounding-box fs-3 me-2"></i>РЕЄСТРАЦІЯ ОБЛІКОВОГО ЗАПИСУ
                     </h5>
                     <button type="reset" class="btn-close shadow-none" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -114,40 +112,41 @@ $title_r = mysqli_fetch_assoc(selectData($title_q, $values, 'i'));
                     <div class="container-fluid">
                         <div class="row">
                             <div class="col-md-6 ps-0 mb-3">
-                                <label class="form-label">ІМ'Я :</label>
+                                <label class="form-label" style="font-size: 12px;">ВВЕДІТЬ, БУДЬ ЛАСКА ВАШЕ РЕАЛЬНЕ ІМ'Я : </label>
                                 <input name="name" type="text" class="form-control shadow-none" required>
                             </div>
                             <div class="col-md-6 p-0 mb-3">
-                                <label class="form-label">ЕЛ.ПОШТА :</label>
+                                <label class="form-label" style="font-size: 12px;">ВВЕДІТЬ, БУДЬ ЛАСКА ВАШУ ЕЛ. АДРЕСУ : </label>
                                 <input name="email" type="email" class="form-control shadow-none" required>
                             </div>
                             <div class="col-md-6 ps-0 mb-3">
-                                <label class="form-label">НОМЕР ТЕЛЕФОНУ :</label>
+                                <label class="form-label" style="font-size: 12px;">ВВЕДІТЬ, БУДЬ ЛАСКА ВАШ НОМЕР ТЕЛЕФОНУ : </label>
                                 <input name="phone-num" type="number" class="form-control shadow-none" required>
                             </div>
                             <div class="col-md-6 p-0 mb-3">
-                                <label class="form-label">АДРЕСА :</label>
+                                <label class="form-label" style="font-size: 12px;">ВВЕДІТЬ, БУДЬ ЛАСКА АДРЕСУ ПРОЖИВАННЯ : </label>
                                 <textarea name="address" class="form-control shadow-none" rows="1" required></textarea>
                             </div>
                             <div class="col-md-6 ps-0 mb-3">
-                                <label class="form-label">ПІН-КОД :</label>
+                                <label class="form-label" style="font-size: 12px;">ВВЕДІТЬ, БУДЬ ЛАСКА ПОШТОВИЙ ІНДЕКС : </label>
                                 <input name="pincode" type="number" class="form-control shadow-none" required>
                             </div>
-                            <div class="col-md-6 p-0 mb-3">
-                                <label class="form-label">ДАТА НАРОДЖЕННЯ :</label>
+                            <div class="col-md-6 p-0 mb-3" style="font-size: 12px;">
+                                <label class="form-label">ВВЕДІТЬ, БУДЬ ЛАСКА ВАШУ ДАТУ НАРОДЖЕННЯ : </label>
                                 <input name="dob" type="date" class="form-control shadow-none" required>
                             </div>
-                            <div class="col-md-6 ps-0 mb-3">
-                                <label class="form-label">ПАРОЛЬ :</label>
-                                <input name="pass" type="password" class="form-control shadow-none" required>
+                            <div class="col-md-6 ps-0 mb-3" style="font-size: 12px;">
+                                <label class="form-label" style="font-size: 12px;">ПРИДУМАЙТЕ, БУДЬ ЛАСКА ДОВОЛІ СКЛАДНИЙ ПАРОЛЬ : </label>
+                                <input name="pass" id="passwordInput" type="password" class="form-control shadow-none" required>
+                                <div id="passwordStrength" class="mt-2"></div>
                             </div>
-                            <div class="col-md-6 p-0 mb-3">
-                                <label class="form-label">ПІДТВЕРДЖЕННЯ ПАРОЛЯ :</label>
+                            <div class="col-md-6 p-0 mb-3" style="font-size: 12px;">
+                                <label class="form-label">ПІДТВЕРДІТЬ, БУДЬ ЛАСКА ВВЕДЕНИЙ ВАМИ ПАРОЛЬ : </label>
                                 <input name="cpass" type="password" class="form-control shadow-none" required>
                             </div>
                         </div>
                         <div class="text-center my-1">
-                            <button type="submit" class="btn btn-dark shadow-none" name="registerBtn">РЕЄСТРАЦІЯ</button>
+                            <button type="submit" class="btn btn-dark shadow-none" name="registerBtn">😎 ВІДКРИТИ СВІТ ПОДОРОЖЕЙ</button>
                         </div>
                     </div>
                 </div>
@@ -155,4 +154,42 @@ $title_r = mysqli_fetch_assoc(selectData($title_q, $values, 'i'));
         </div>
     </div>
 </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    var passwordInput = document.getElementById('passwordInput');
+    var passwordStrength = document.getElementById('passwordStrength');
+    
+    passwordInput.addEventListener('input', function() {
+        var password = passwordInput.value.trim();
+        if (password === '') {
+            passwordStrength.innerHTML = '';
+        } else {
+            var strength = calculatePasswordStrength(password);
+            updatePasswordStrengthIndicator(strength);
+        }
+    });
+    
+    function calculatePasswordStrength(password) {
+        var strength = 0;
+        
+        strength += password.length >= 8 ? 1 : 0;
+        strength += /[A-Z]/.test(password) ? 1 : 0;
+        strength += /[a-z]/.test(password) ? 1 : 0;
+        strength += /\d/.test(password) ? 1 : 0;
+        strength += /[!@#$%^&*()_+{}\[\]:;<>,.?~\\/-]/.test(password) ? 1 : 0;
+        
+        return strength;
+    }
+    
+    function updatePasswordStrengthIndicator(strength) {
+        var indicators = ['😭 СЛАБКИЙ', '🧐 ПОМІРНИЙ', '😎 СИЛЬНИЙ'];
+        var indicator = indicators[Math.min(Math.floor(strength / 2), 2)];
+        var colorClass = ['text-danger', 'text-warning', 'text-success'][Math.min(Math.floor(strength / 2), 2)];
+
+        passwordStrength.innerHTML = 'СКЛАДНІСТЬ ПАРОЛЯ СТАНОВИТЬ : <span class="' + colorClass + '">' + indicator + '</span>';
+    }
+});
+</script>
+
 <?php } ?>
