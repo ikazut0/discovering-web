@@ -49,14 +49,14 @@ if (isset($_POST['get_tour'])) {
         <tr class='align-middle'>
          <td class='text-center' style='font-size: 13px;'>$i</td>
          <td class='text-center' style='font-size: 13px;'>$row[tour_name]</td>
-         <td class='text-center' style='font-size: 13px;'>$row[tour_area] sq. ft.</td>
+         <td class='text-center' style='font-size: 13px;'>$row[tour_area] ЛЮД. </td>
          <td class='text-center' style='font-size: 13px;'>
             <div class='badge-container'>
                 <span class='badge rounded-pill bg-light text-dark'>
-                    Adult: $row[tour_adult]
+                ДОРОСЛИХ : $row[tour_adult]
                 </span>
                 <span class='badge rounded-pill bg-light text-dark'>
-                    Children: $row[tour_children]
+                ДІТЕЙ : $row[tour_children]
                 </span>
             </div>
          </td>
